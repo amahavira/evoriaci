@@ -12,6 +12,7 @@ class User extends CI_Controller
 		is_logged_in();
 		$this->load->model('KategoriModel');
 		$this->load->model('TampilModel');
+		$this->load->library('typography');
 	}
 
 	public function index()
@@ -231,8 +232,10 @@ class User extends CI_Controller
 	public function tambah_jasa()
 	{
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-		$this->form_validation->set_rules('harga', 'Harga', 'required|trim');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required|trim');
+		$this->form_validation->set_rules('harga', 'Harga', 'required|trim');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+		$this->form_validation->set_rules('syarat', 'Syarat', 'required|trim');
 		$this->form_validation->set_rules('id_kategori', 'Kategori', 'required');
 
 		if ($this->form_validation->run() == false) {
@@ -264,6 +267,8 @@ class User extends CI_Controller
 				$data = [
 					'nama' => htmlspecialchars($this->input->post('nama', true)),
 					'harga' => htmlspecialchars($this->input->post('harga', true)),
+					'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
+					'syarat' => htmlspecialchars($this->input->post('syarat', true)),
 					'gambar' => $gambar,
 					'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
 					'id_kategori' => htmlspecialchars($this->input->post('id_kategori', true)),

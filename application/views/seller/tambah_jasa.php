@@ -133,12 +133,20 @@
 												</div>
 												<div class="form-row">
 													<div class="col">
-														<div class="form-group"><label for="deskripsi"><strong>Deskripsi Isi Paket</strong><br></label><textarea class="form-control" rows="4" placeholder="Contoh : 1. Dekorasi, 2. Vendor Makanan, 3. MUA, dll" id="deskripsi" name="deskripsi"></textarea></div>
+														<div class="form-group">
+															<label for="deskripsi"><strong>Deskripsi Isi Paket</strong><br></label>
+															<textarea class="form-control" rows="4" placeholder="Contoh : 1. Dekorasi, 2. Vendor Makanan, 3. MUA, dll" id="deskripsi" name="deskripsi"></textarea>
+															<?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
+														</div>
 													</div>
 												</div>
 												<div class="form-row">
 													<div class="col">
-														<div class="form-group"><label for="syarat"><strong>Syarat & Ketentuan</strong><br></label><textarea class="form-control" rows="4" placeholder="Jelaskan syarat & ketentuan untuk paket jasa ini" name="syarat"></textarea></div>
+														<div class="form-group">
+															<label for="syarat"><strong>Syarat & Ketentuan</strong><br></label>
+															<textarea class="form-control" rows="4" placeholder="Jelaskan syarat & ketentuan untuk paket jasa ini" name="syarat"></textarea>
+															<?= form_error('syarat', '<small class="text-danger pl-3">', '</small>'); ?>
+														</div>
 													</div>
 												</div>
 												<div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Tambah Jasa</button></div>

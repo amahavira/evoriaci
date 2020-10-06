@@ -2,7 +2,7 @@
 
 <?php
 $id_jasa = $tampilp->id;
-$queryJasa = "SELECT jasa.*, users.nama_bisnis
+$queryJasa = "SELECT jasa.*, users.*
 FROM jasa JOIN users
 ON jasa.id_seller = users.id
 WHERE jasa.id = $id_jasa";
@@ -66,20 +66,20 @@ $user = $this->db->query($queryUser)->result_array();
 						<tr>
 							<td> Nama </td>
 							<td> : </td>
-							<td><span class="text-right"><b>Doni Setiawan</b></span></td>
+							<td><span class="text-right"><b><?= $jasa[0]['name']; ?></b></span></td>
 						</tr>
 						<tr>
 							<td> Jabatan </td>
 							<td> : </td>
-							<td><span class="text-right"><b>Marketing Yoyo Project</b></span></td>
+							<td><span class="text-right"><b><?= $jasa[0]['pekerjaan']; ?> <?= $jasa[0]['nama_bisnis']; ?></b></span></td>
 						</tr>
 						<tr>
 							<td> Alamat </td>
 							<td> : </td>
-							<td><span class="text-right"><b>Yogyakarta</b></span></td>
+							<td><span class="text-right"><b><?= $jasa[0]['alamat']; ?></b></span></td>
 						</tr>
 						<tr>
-							<td colspan="12"> Dalam hal ini bertindak untuk dan atas nama <b>Yoyo Project</b> dan Selanjutnya disebut sebagai pihak I </td>
+							<td colspan="12"> Yang mana selanjutnya akan disebut sebagai <b>Pihak Pertama</b> </td>
 						</tr>
 
 						<td><br></td>
@@ -92,7 +92,7 @@ $user = $this->db->query($queryUser)->result_array();
 						<tr>
 							<td> Jabatan </td>
 							<td> : </td>
-							<td><span class="text-right"><b>Pemesan</b></span></td>
+							<td><span class="text-right"><b><?= $user[0]['pekerjaan']; ?></b></span></td>
 						</tr>
 						<tr>
 							<td> Alamat </td>
@@ -100,7 +100,7 @@ $user = $this->db->query($queryUser)->result_array();
 							<td><span class="text-right"><b><?= $user[0]['alamat']; ?></b></span></td>
 						</tr>
 						<tr>
-							<td colspan="12"> Dalam hal ini bertindak untuk dan atas nama <b>Peminjam</b> dan Selanjutnya disebut sebagai pihak II </td>
+							<td colspan="12"> Yang mana selanjutnya akan disebut sebagai <b>Pihak Kedua</b> </td>
 						</tr>
 						<td></td>
 					</table>

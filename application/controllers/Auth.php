@@ -103,6 +103,8 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
 			'is_unique' => 'The Email has already registered!'
 		]);
+		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 		$this->form_validation->set_rules('nohp', 'Number Phone', 'required|trim|integer|min_length[5]', [
 			'integer' => 'The Number Phone must be number!',
 			'min_length' => 'The Number Phone too short!'
@@ -124,6 +126,8 @@ class Auth extends CI_Controller
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'nohp' => htmlspecialchars($this->input->post('nohp', true)),
 				'email' => htmlspecialchars($email),
+				'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+				'alamat' => htmlspecialchars($this->input->post('alamat', true)),
 				'image' => 'default.png',
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
@@ -159,6 +163,7 @@ class Auth extends CI_Controller
 		}
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
 			'is_unique' => 'The Email has already registered!'
 		]);
@@ -202,6 +207,7 @@ class Auth extends CI_Controller
 				$data = [
 					'name' => htmlspecialchars($this->input->post('name', true)),
 					'nohp' => htmlspecialchars($this->input->post('nohp', true)),
+					'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
 					'email' => htmlspecialchars($email),
 					'image' => 'default.png',
 					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
@@ -215,21 +221,6 @@ class Auth extends CI_Controller
 					'npwp' => $npwp,
 					'date_created' => time()
 				];
-				// $data = [
-				// 	'name' => htmlspecialchars($this->input->post('name', true)),
-				// 	'nohp' => htmlspecialchars($this->input->post('nohp', true)),
-				// 	'email' => htmlspecialchars($email),
-				// 	'image' => 'default.png',
-				// 	'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-				// 	'role_id' => 4,
-				// 	'is_active' => 0,
-				// 	'nama_bisnis' => htmlspecialchars($this->input->post('nama_bisnis', true)),
-				// 	'tentang' => htmlspecialchars($this->input->post('tentang', true)),
-				// 	'alamat' => htmlspecialchars($this->input->post('alamat', true)),
-				// 	'kota' => htmlspecialchars($this->input->post('kota', true)),
-				// 	'medsos' => htmlspecialchars($this->input->post('medsos', true)),
-				// 	'date_created' => time()
-				// ];
 
 				//siapakan token
 				$token = base64_encode(random_bytes(32));

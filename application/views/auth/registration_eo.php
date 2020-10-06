@@ -31,6 +31,11 @@
 												<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 											</div>
 											<div class="form-group">
+												<h6 style="color: #7E4A9E; text-align: left;">Isikan Jabatan Pekerjaan</h6>
+												<input value="<?= set_value('pekerjaan'); ?>" type="text" class="form-control form-control-user" id="pekerjaan" name="pekerjaan" placeholder="Masukkan Jabatan Pekerjaan">
+												<?= form_error('pekerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
+											</div>
+											<div class="form-group">
 												<h6 style="color: #7E4A9E; text-align: left;">Isikan Email Bisnis Anda</h6>
 												<input value="<?= set_value('email'); ?>" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan Email Anda">
 												<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>

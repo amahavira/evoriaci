@@ -11,15 +11,23 @@
 						</div>
 						<form class="user" method="POST" action="<?= base_url('auth/registration'); ?>">
 							<div class="form-group">
-								<input value="<?= set_value('name'); ?>" type="text" class="form-control form-control-user" id="name" name="name" placeholder="Full Name">
+								<input value="<?= set_value('name'); ?>" type="text" class="form-control form-control-user" id="name" name="name" placeholder="Nama Lengkap">
 								<?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="form-group">
-								<input value="<?= set_value('email'); ?>" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address">
+								<input value="<?= set_value('email'); ?>" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Alamat Email">
 								<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="form-group">
-								<input value="<?= set_value('nohp'); ?>" type="text" class="form-control form-control-user" id="nohp" name="nohp" placeholder="Number Phone">
+								<input value="<?= set_value('pekerjaan'); ?>" type="text" class="form-control form-control-user" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan">
+								<?= form_error('pekerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group">
+								<input value="<?= set_value('alamat'); ?>" type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat">
+								<?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group">
+								<input value="<?= set_value('nohp'); ?>" type="text" class="form-control form-control-user" id="nohp" name="nohp" placeholder="Nomor Telepon">
 								<?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="form-group row">
