@@ -79,7 +79,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 							<i class="fas fa-map-marker-alt" style="color: red"></i>
 							<span style="font-size: 13px"> <?= $row['lokasi']; ?></span>
 							<hr style="margin-top:6px;margin-bottom: 6px">
-							<a href="<?php echo base_url() ?>user/detail">
+							<a href="<?= base_url(); ?>user/detail/<?= $row['id'] ?>">
 								<div class="card-img-overlay"></div>
 								<h5 class="font-weight-bold" style="color: #7E4A9E; margin-bottom: 6px;"><?= $row['nama']; ?></h5>
 							</a>

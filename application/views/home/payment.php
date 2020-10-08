@@ -109,12 +109,17 @@ $user = $this->db->query($queryUser)->result_array();
 						Berdasarkan hal tersebut di atas maka kedua bgelah pihak bersepakat untuk mengadakan perjanjian kerjasama untuk waktu tertentu dengan syarat dan ketentuan sebagai berikut :
 					</p>
 					<p style="text-align: justify; margin: 10px">
-						1. Pihak I memberikan perlengkapan acara yaitu :
+						1. Pihak <b>Pertama</b> memberikan fasilitas acara yaitu :
 					</p>
 					<ul class="list-group">
-						<li class="list-group-item">Dekorasi Rumah</li>
-						<li class="list-group-item">Dekorasi Resepsi</li>
-						<li class="list-group-item">Catering</li>
+						<li class="list-group-item"><?= $this->typography->auto_typography($tampilp->deskripsi); ?></li>
+					</ul>
+					<hr>
+					<p style="text-align: justify; margin: 10px">
+						2. Pihak <b>Kedua</b> mentaati syarat dan ketentuan yaitu :
+					</p>
+					<ul class="list-group">
+						<li class="list-group-item"><?= $this->typography->auto_typography($tampilp->syarat); ?></li>
 					</ul>
 					<hr>
 				</div>
@@ -184,9 +189,9 @@ $user = $this->db->query($queryUser)->result_array();
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content" id="pay" style="border-radius: 10px">
 					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
-						<td>1 x Engagement Packaged </td>
+						<td><?= $tampilp->nama ?> </td>
 						<td><span class="text-right">
-								<h4>Rp 50.000.000,-</h4>
+								<h4>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</h4>
 							</span></td>
 					</div>
 					<div class="modal-body">
@@ -283,23 +288,23 @@ $user = $this->db->query($queryUser)->result_array();
 								<table class="table">
 									<tr>
 										<td> Nama </td>
-										<td><span class="text-right"> Steven Paidi</span></td>
+										<td><span class="text-right"><?= $user[0]['name']; ?></span></td>
 									</tr>
 									<tr>
 										<td> No HP </td>
-										<td><span class="text-right">081234543234</span></td>
+										<td><span class="text-right"><?= $user[0]['nohp']; ?></span></td>
 									</tr>
 									<tr>
 										<td> E-mail </td>
-										<td><span class="text-right"> paidicuk@gmail.com</span></td>
+										<td><span class="text-right"><?= $user[0]['email']; ?></span></td>
 									</tr>
 								</table>
 								<hr>
 								<label><b>Rincian Biaya</b></label>
 								<table class="table">
 									<tr>
-										<td> 1 x Engagement Packaged </td>
-										<td><span class="text-right"><b>Rp 50.000.000,-</b></span></td>
+										<td> <?= $tampilp->nama ?> </td>
+										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
 									</tr>
 								</table>
 								<hr>
