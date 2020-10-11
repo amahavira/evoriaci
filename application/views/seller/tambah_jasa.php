@@ -149,7 +149,9 @@
 														</div>
 													</div>
 												</div>
-												<div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Tambah Jasa</button></div>
+												<div class="form-group">
+													<button class="btn btn-primary btn-sm" type="submit">Tambah Jasa</button>
+												</div>
 					</form>
 				</div>
 			</div>

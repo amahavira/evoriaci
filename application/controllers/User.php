@@ -31,18 +31,19 @@ class User extends CI_Controller
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
-		$this->form_validation->set_rules('name', 'Full Name', 'required|trim');
+		$this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
+		$this->form_validation->set_rules('nohp', 'No HP', 'required|trim');
+		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
-			// $this->load->view('templates/profile_header', $data);
-			// $this->load->view('templates/sidebar', $data);
-			// $this->load->view('templates/topbar', $data);
 			$this->load->view('templates/header_evoria', $data);
 			$this->load->view('user/edit', $data);
 			$this->load->view('templates/profile_footer');
 		} else {
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
+			$nohp = $this->input->post('nohp');
+			$pekerjaan = $this->input->post('pekerjaan');
 
 			//cek kalau ada gambar baru
 			$uploadImage = $_FILES['image']['name'];
@@ -62,11 +63,13 @@ class User extends CI_Controller
 					$newImage = $this->upload->data('file_name');
 					$this->db->set('image', $newImage);
 				} else {
-					echo $this->upload->dispay_errors();
+					echo $this->upload->display_errors();
 				}
 			}
 
 			$this->db->set('name', $name);
+			$this->db->set('nohp', $nohp);
+			$this->db->set('pekerjaan', $pekerjaan);
 			$this->db->where('email', $email);
 			$this->db->update('users');
 
@@ -260,7 +263,7 @@ class User extends CI_Controller
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload('gambar')) {
-				echo $this->upload->dispay_errors();
+				echo $this->upload->display_errors();
 			} else {
 				$gambar = $this->upload->data('file_name');
 				// $this->input->post('gambar', $gambar);
@@ -301,7 +304,7 @@ class User extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header_evoria', $data);
 			$this->load->view('seller/data_bisnis', $data);
-			$this->load->view('templates/profile_footer');
+			$this->load->view('templates/seller_footer');
 		} else {
 			$email = $this->input->post('email');
 			$nama_bisnis = $this->input->post('nama_bisnis');
@@ -311,40 +314,39 @@ class User extends CI_Controller
 			$medsos = $this->input->post('medsos');
 
 			//cek kalau ada gambar baru
-			$uploadImage = $_FILES['image']['name'];
-
-			if ($uploadImage) {
-				$config['allowed_types'] = 'jpg|png';
-				$config['max_size'] = '5000';
-				$config['upload_path'] = './assets/img/profile/';
+			$uploadNpwp = $_FILES['npwp']['name'];
+			if ($uploadNpwp) {
+				$config['upload_path'] = './assets/dokumen/npwp/';
+				$config['allowed_types']        = 'pdf';
+				$config['max_size']             = 10000;
 
 				$this->load->library('upload', $config);
 
-				if ($this->upload->do_upload('image')) {
-					$oldImage = $data['user']['image'];
-					if ($oldImage != 'default.png') {
-						unlink(FCPATH . 'assets/img/profile/' . $oldImage);
-					}
-					$newImage = $this->upload->data('file_name');
-					$this->db->set('image', $newImage);
+				if ($this->upload->do_upload('npwp')) {
+					$oldFile = $data['user']['npwp'];
+					// 		// if ($oldFile) {
+					unlink(FCPATH . '/assets/dokumen/npwp/' . $oldFile);
+					// 		// }
+					$newFile = $this->upload->data('file_name');
+					$this->db->set('npwp', $newFile);
 				} else {
-					echo $this->upload->dispay_errors();
+					echo $this->upload->display_errors();
 				}
 			}
 
-			$this->db->where('email', $email);
 			$this->db->set('nama_bisnis', $nama_bisnis);
 			$this->db->set('tentang', $tentang);
 			$this->db->set('alamat', $alamat);
 			$this->db->set('kota', $kota);
 			$this->db->set('medsos', $medsos);
+			$this->db->where('email', $email);
 			$this->db->update('users');
 
 			$this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
                 Data Berhasil Diperbarui!
             </div>');
-			redirect('user');
+			redirect('user/profile_seller');
 		}
 	}
 }

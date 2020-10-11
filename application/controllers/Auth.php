@@ -197,7 +197,7 @@ class Auth extends CI_Controller
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload('npwp')) {
-				echo $this->upload->dispay_errors();
+				echo $this->upload->display_errors();
 				// echo '<pre>';
 				// print_r($this->upload->data());
 				// echo '</pre>';

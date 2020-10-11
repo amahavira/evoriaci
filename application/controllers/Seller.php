@@ -74,7 +74,7 @@ class Seller extends CI_Controller
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload('gambar')) {
-				echo $this->upload->dispay_errors();
+				echo $this->upload->display_errors();
 			} else {
 				$gambar = $this->upload->data('file_name');
 				// $this->input->post('gambar', $gambar);

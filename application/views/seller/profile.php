@@ -5,7 +5,7 @@
 		<div class="card mb-3" style=" border-radius: 10px; width: 100%">
 			<div class="row no-gutters" style="margin: 10px">
 				<div class="col-md-3">
-					<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img" alt="Responsive image" style="height: 150px; width: auto; border-radius: 50%; margin-left: 30%">
+					<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img" alt="Responsive image" style="height: 150px; width: 150px; border-radius: 50%; margin-left: 30%">
 				</div>
 				<div class="col-md-9">
 					<div class="card-body">
