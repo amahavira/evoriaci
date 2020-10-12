@@ -289,7 +289,7 @@ class User extends CI_Controller
 		}
 	}
 
-	public function edit_jasa($id)
+	public function tampil_edit_jasa($id)
 	{
 		$data['judul'] = 'Edit Jasa';
 		$data['user'] = $this->db->get_where('users', ['email' =>
@@ -297,6 +297,17 @@ class User extends CI_Controller
 		$data['kategori_jasa'] = $this->KategoriModel->getdata();
 		$editj = $this->TampilModel->getTampilJasa($id);
 		$data['editj'] = $editj;
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('seller/edit_jasa', $data);
+		$this->load->view('templates/seller_footer');
+	}
+
+	public function edit_jasa()
+	{
+		$data['judul'] = 'Edit Jasa';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['kategori_jasa'] = $this->KategoriModel->getdata();
 
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required|trim');
@@ -310,7 +321,7 @@ class User extends CI_Controller
 			$this->load->view('seller/edit_jasa', $data);
 			$this->load->view('templates/seller_footer');
 		} else {
-			$idj = $this->input->post('id');
+			$id = $this->input->post('id');
 			$nama = $this->input->post('nama');
 			$lokasi = $this->input->post('lokasi');
 			$harga = $this->input->post('harga');
@@ -331,9 +342,9 @@ class User extends CI_Controller
 
 				if ($this->upload->do_upload('gambar')) {
 					$oldFile = $data['editj']['gambar'];
-					// 		// if ($oldFile) {
+					// if ($oldFile != ' ') {
 					unlink(FCPATH . '/assets/img/jasa/' . $oldFile);
-					// 		// }
+					// }
 					$newFile = $this->upload->data('file_name');
 					$this->db->set('gambar', $newFile);
 				} else {
@@ -347,7 +358,7 @@ class User extends CI_Controller
 			$this->db->set('deskripsi', $deskripsi);
 			$this->db->set('syarat', $syarat);
 			$this->db->set('id_kategori', $id_kategori);
-			$this->db->where('id', $idj);
+			$this->db->where('id', $id);
 			$this->db->update('jasa');
 
 			$this->session->set_flashdata('message', '

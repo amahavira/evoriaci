@@ -104,7 +104,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 								</div>
 								<button type="button" style="font-size: 10px" class="btn tmbl-ungu">Evoria Partner</button>
 								<div class="row p-l-10">
-									<a class="btn tmbl-ungu1" href="<?= base_url(); ?>user/edit_jasa/<?= $row['id'] ?>">Edit</a>
+									<a class="btn tmbl-ungu1" href="<?= base_url(); ?>user/tampil_edit_jasa/<?= $row['id'] ?>">Edit</a>
 								</div>
 							</div>
 						</div>
