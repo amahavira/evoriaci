@@ -289,6 +289,75 @@ class User extends CI_Controller
 		}
 	}
 
+	public function edit_jasa($id)
+	{
+		$data['judul'] = 'Edit Jasa';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['kategori_jasa'] = $this->KategoriModel->getdata();
+		$editj = $this->TampilModel->getTampilJasa($id);
+		$data['editj'] = $editj;
+
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required|trim');
+		$this->form_validation->set_rules('harga', 'Harga', 'required|trim');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+		$this->form_validation->set_rules('syarat', 'Syarat', 'required|trim');
+		$this->form_validation->set_rules('id_kategori', 'Kategori', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header_evoria', $data);
+			$this->load->view('seller/edit_jasa', $data);
+			$this->load->view('templates/seller_footer');
+		} else {
+			$idj = $this->input->post('id');
+			$nama = $this->input->post('nama');
+			$lokasi = $this->input->post('lokasi');
+			$harga = $this->input->post('harga');
+			$deskripsi = $this->input->post('deskripsi');
+			$syarat = $this->input->post('syarat');
+			$id_kategori = $this->input->post('id_kategori');
+
+			//cek kalau ada gambar baru
+			$uploadGambar = $_FILES['gambar']['name'];
+			if ($uploadGambar) {
+				$config['upload_path'] = './assets/img/jasa/';
+				$config['allowed_types']        = 'jpeg|jpg|png|PNG';
+				$config['max_size']             = 10000;
+				$config['max_width']            = 10000;
+				$config['max_height']           = 10000;
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('gambar')) {
+					$oldFile = $data['editj']['gambar'];
+					// 		// if ($oldFile) {
+					unlink(FCPATH . '/assets/img/jasa/' . $oldFile);
+					// 		// }
+					$newFile = $this->upload->data('file_name');
+					$this->db->set('gambar', $newFile);
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+
+			$this->db->set('nama', $nama);
+			$this->db->set('lokasi', $lokasi);
+			$this->db->set('harga', $harga);
+			$this->db->set('deskripsi', $deskripsi);
+			$this->db->set('syarat', $syarat);
+			$this->db->set('id_kategori', $id_kategori);
+			$this->db->where('id', $idj);
+			$this->db->update('jasa');
+
+			$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Data Berhasil Diperbarui!
+            </div>');
+			redirect('user/profile_seller');
+		}
+	}
+
 	public function data_bisnis()
 	{
 		$data['judul'] = 'Data Tentang Bisnis';

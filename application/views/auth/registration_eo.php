@@ -47,7 +47,7 @@
 													<?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
 												</div>
 												<div class="col-sm-6">
-													<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+													<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Password">
 												</div>
 											</div>
 										</div>
@@ -89,7 +89,7 @@
 													<label class="custom-file-label text-left" for="npwp">Pilih Dokumen PDF</label>
 												</div>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<h6 style="color: #7E4A9E; text-align: left;">Range Harga</h6>
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -109,9 +109,7 @@
 														Diatas Rp. 25.000.000
 													</label>
 												</div>
-												<!-- <input value="<?= set_value('kota'); ?>" type="text" class="form-control form-control-user" id="kota" name="kota" placeholder="Kota">
-                                                            <?= form_error('kota', '<small class="text-danger pl-3">', '</small>'); ?> -->
-											</div>
+											</div> -->
 											<br>
 											<div class="col-md-12">
 												<button type="submit" class="btn tmbl1-ungu1">

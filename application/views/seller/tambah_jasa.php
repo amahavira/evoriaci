@@ -100,7 +100,7 @@
 													<div class="col">
 														<div class="form-group">
 															<label for="nama"><strong>Nama Paket</strong></label>
-															<input value="<?= set_value('nama'); ?>" class="form-control" type="text" placeholder="Contoh : Paket Pernikahan" id="nama" name="nama">
+															<input <?= set_value('nama'); ?> class="form-control" type="text" placeholder="Contoh : Paket Pernikahan" id="nama" name="nama">
 															<?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
 														</div>
 													</div>
@@ -127,7 +127,7 @@
 													<div class="col">
 														<div class="form-group">
 															<label for="harga"><strong>Harga Paket</strong></label>
-															<input <?= set_value('lokasi'); ?> class="form-control" type="text" placeholder="Harga Paket" id="harga" name="harga"></div>
+															<input <?= set_value('harga'); ?> class="form-control" type="number" placeholder="Harga Paket" id="harga" name="harga"></div>
 														<?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
 													</div>
 												</div>

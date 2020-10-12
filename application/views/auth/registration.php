@@ -7,7 +7,7 @@
 				<div class="col-lg">
 					<div class="p-5">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="color: #7E4A9E;">Create an Account!</h1>
+							<h1 class="h4 text-gray-900 mb-4" style="color: #7E4A9E;">Buatlah Akun Anda!</h1>
 						</div>
 						<form class="user" method="POST" action="<?= base_url('auth/registration'); ?>">
 							<div class="form-group">
@@ -36,16 +36,16 @@
 									<?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="col-sm-6">
-									<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+									<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Password">
 								</div>
 							</div>
 							<button type="submit" class="btn tmbl1-ungu1 btn-block">
-								Register Account
+								Daftarkan Akun
 							</button>
 						</form>
 						<hr>
 						<div class="text-center">
-							<a class="small" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
+							<a class="small" href="<?= base_url('auth'); ?>">Sudah punya akun? Silahkan Login!</a>
 						</div>
 					</div>
 				</div>
