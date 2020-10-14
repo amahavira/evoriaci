@@ -62,6 +62,24 @@
 			background: rgba(108, 88, 179, 0.75);
 			border: 2px solid rgba(108, 89, 179, 0.75);
 		}
+
+		.tmbl-merah {
+			font-family: Raleway-SemiBold;
+			font-size: 13px;
+			color: white;
+			letter-spacing: 1px;
+			line-height: 15px;
+			border: 2px solid rgba(217, 83, 79, 0.75);
+			border-radius: 40px;
+			background-color: #d9534f;
+			transition: all 0.3s ease 0s;
+		}
+
+		.tmbl-merah:hover {
+			color: #FFF;
+			background: rgba(217, 82, 79, 0.75);
+			border: 2px solid rgba(217, 83, 79, 0.75);
+		}
 	</style>
 
 	<!-- timer -->

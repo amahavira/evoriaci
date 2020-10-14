@@ -12,6 +12,7 @@ class User extends CI_Controller
 		is_logged_in();
 		$this->load->model('KategoriModel');
 		$this->load->model('TampilModel');
+		$this->load->model('HapusModel');
 		$this->load->library('typography');
 	}
 
@@ -289,6 +290,7 @@ class User extends CI_Controller
 		}
 	}
 
+	//profile Seller (serangkaian proses edit data)
 	public function tampil_edit_jasa($id)
 	{
 		$data['judul'] = 'Edit Jasa';
@@ -308,6 +310,9 @@ class User extends CI_Controller
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['kategori_jasa'] = $this->KategoriModel->getdata();
+		$id = $this->input->post('id');
+		$editj = $this->TampilModel->getEditJasa($id);
+		$data['editj'] = $editj;
 
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required|trim');
@@ -321,7 +326,6 @@ class User extends CI_Controller
 			$this->load->view('seller/edit_jasa', $data);
 			$this->load->view('templates/seller_footer');
 		} else {
-			$id = $this->input->post('id');
 			$nama = $this->input->post('nama');
 			$lokasi = $this->input->post('lokasi');
 			$harga = $this->input->post('harga');
@@ -342,9 +346,9 @@ class User extends CI_Controller
 
 				if ($this->upload->do_upload('gambar')) {
 					$oldFile = $data['editj']['gambar'];
-					// if ($oldFile != ' ') {
-					unlink(FCPATH . '/assets/img/jasa/' . $oldFile);
-					// }
+					if ($oldFile != ' ') {
+						unlink(FCPATH . '/assets/img/jasa/' . $oldFile);
+					}
 					$newFile = $this->upload->data('file_name');
 					$this->db->set('gambar', $newFile);
 				} else {
@@ -369,6 +373,19 @@ class User extends CI_Controller
 		}
 	}
 
+	public function hapusJasa($id)
+	{
+		$hapusj = $this->TampilModel->getEditJasa($id);
+		$data['hapusj'] = $hapusj;
+		$oldFile = $data['hapusj']['gambar'];
+		if ($oldFile != ' ') {
+			unlink(FCPATH . '/assets/img/jasa/' . $oldFile);
+		}
+		$this->HapusModel->hapusJasa($id);
+		redirect('user/profile_seller');
+	}
+
+	//edit data bisnis
 	public function data_bisnis()
 	{
 		$data['judul'] = 'Data Tentang Bisnis';

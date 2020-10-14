@@ -109,9 +109,10 @@ $jasa = $this->db->query($queryJasa)->result_array();
 													<div class="form-group">
 														<div class="form-group"><label for="kategori"><strong>Kategori Paket</strong></label>
 															<select class="form-control" name="id_kategori" id="id_kategori" required>
-																<option value="">Pilih Kategori</option>
 																<?php foreach ($kategori_jasa as $row) : ?>
-																	<option value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
+																	<option <?php if ($jasa[0]['id_kategori'] == $row['id']) {
+																				echo 'selected';
+																			}; ?> value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
 																<?php endforeach; ?>
 															</select>
 														</div>
