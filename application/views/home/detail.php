@@ -2,7 +2,7 @@
 
 <?php
 $id_jasa = $tampilj->id;
-$queryJasa = "SELECT jasa.*, users.nama_bisnis, users.nohp
+$queryJasa = "SELECT jasa.*, users.*
 FROM jasa JOIN users
 ON jasa.id_seller = users.id
 WHERE jasa.id = $id_jasa";
@@ -58,7 +58,6 @@ $jasa = $this->db->query($queryJasa)->result_array();
 					<hr>
 					<h5 style="padding-bottom: 10px; padding-top: 10px; font-weight: bold;">Lokasi :</h5>
 					<hr>
-					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.98363568584!2d110.33982534714258!3d-7.803163972832354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787bd5b6bc5%3A0x21723fd4d3684f71!2sYogyakarta%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1585040748913!5m2!1sid!2sid" width="100%" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe> -->
 					<?= $tampilj->lokasi ?>
 					<hr>
 					<h5 style="padding-bottom: 10px; padding-top: 10px; font-weight: bold;"><i class="fas fa-info-circle"></i> Syarat dan Ketentuan :</h5>
@@ -74,17 +73,9 @@ $jasa = $this->db->query($queryJasa)->result_array();
 		<div class="col-lg-4">
 			<div class="card fixed" style="border-radius: 10px">
 				<div class="card-header bg-light text-dark px-3" style="border-radius: 10px 10px 0px 0px">
-					<i style="color:#fdc502 " class="fas fa-award"></i> <span class="font-weight-bold"> Checkout </span>
-					<h6></h6>
+					<i style="color:#fdc502 " class="fas fa-award"></i> <span class="font-weight-bold"> Rincian Biaya </span>
 				</div>
 				<div class="card-body">
-					<label><b>Tanggal Acara</b></label>
-					<hr>
-					<div class="form-inline input-group">
-						<input type="date" class="form-control datepicker" name="tgl_order" id="tgl_order" required>
-					</div>
-					<hr>
-					<label><b>Rincian Biaya</b></label>
 					<table class="table">
 						<tr>
 							<td><?= $tampilj->nama ?></td>
@@ -92,8 +83,9 @@ $jasa = $this->db->query($queryJasa)->result_array();
 						</tr>
 					</table>
 					<hr>
-					<!-- <a href="<?php echo base_url() ?>home/payment" class="btn btn-outline-light btn-block" style="background-color: #7E4A9E">Pesan</a> -->
-					<a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Pesan</a>
+					<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Pesan</a> -->
+					<button class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Hubungi EO</button>
+					<button class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#pesan" style="background-color: #7E4A9E">Pesan Sekarang</button>
 				</div>
 			</div>
 		</div>
@@ -120,7 +112,54 @@ $jasa = $this->db->query($queryJasa)->result_array();
 
 					</div>
 					<div class="modal-footer text-center">
+						<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a> -->
 						<a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal Add Product-->
+
+		<!-- Modal Add Product-->
+		<div class="modal fade" id="pesan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content" style="border-radius: 10px">
+					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
+						<h4>Pilih Tanggal Acara</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<?= form_open_multipart('user/pesanan_saya'); ?>
+						<div class="card fixed" style="border-radius: 10px">
+							<div class="card-header bg-light text-dark px-3" style="border-radius: 10px 10px 0px 0px">
+								<i style="color:#fdc502 " class="fas fa-award"></i> <span class="font-weight-bold"> Checkout </span>
+							</div>
+							<div class="card-body">
+								<label><b>Tanggal Acara</b></label>
+								<hr>
+								<div class="form-group">
+									<input type="hidden" class="form-control" name="id_jasa" id="id_jasa" value="<?= $id_jasa; ?>">
+									<input type="hidden" class="form-control" name="id_seller" id="id_seller" value="<?= $jasa[0]['id_seller']; ?>">
+									<input type="hidden" class="form-control" name="id_user" id="id_user" value="<?= $user['id']; ?>">
+									<input type="date" class="form-control datepicker" name="tgl_acara" id="tgl_acara" required>
+									<input type="hidden" class="form-control datepicker" name="tgl_order" id="tgl_order" value="<?= date('Y-m-d'); ?>">
+								</div>
+								<hr>
+								<label><b>Rincian Biaya</b></label>
+								<table class="table">
+									<tr>
+										<td><?= $tampilj->nama ?></td>
+										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
+									</tr>
+								</table>
+								<hr>
+								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Pesan Sekarang</button>
+							</div>
+						</div>
+						</form>
+
 					</div>
 				</div>
 			</div>
@@ -129,5 +168,4 @@ $jasa = $this->db->query($queryJasa)->result_array();
 
 	</div>
 	<br>
-</div>
 </div>

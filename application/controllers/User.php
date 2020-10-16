@@ -12,6 +12,7 @@ class User extends CI_Controller
 		is_logged_in();
 		$this->load->model('KategoriModel');
 		$this->load->model('TampilModel');
+		$this->load->model('PesananModel');
 		$this->load->model('HapusModel');
 		$this->load->library('typography');
 	}
@@ -421,9 +422,9 @@ class User extends CI_Controller
 
 				if ($this->upload->do_upload('npwp')) {
 					$oldFile = $data['user']['npwp'];
-					// 		// if ($oldFile) {
-					unlink(FCPATH . '/assets/dokumen/npwp/' . $oldFile);
-					// 		// }
+					if ($oldFile != ' ') {
+						unlink(FCPATH . '/assets/dokumen/npwp/' . $oldFile);
+					}
 					$newFile = $this->upload->data('file_name');
 					$this->db->set('npwp', $newFile);
 				} else {
@@ -444,6 +445,50 @@ class User extends CI_Controller
                 Data Berhasil Diperbarui!
             </div>');
 			redirect('user/profile_seller');
+		}
+	}
+
+	// Pesanan
+
+	public function pesanan()
+	{
+		$data['judul'] = 'Halaman Pesanan';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['pesanan'] = $this->PesananModel->getPesanan();
+
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('seller/pesanan', $data);
+		$this->load->view('templates/profile_footer');
+	}
+	public function pesanan_saya()
+	{
+		$data['judul'] = 'Pesanan Saya';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['pesanan'] = $this->PesananModel->getPesanan();
+
+		$this->form_validation->set_rules('tgl_acara', 'Tanggal Acara', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header_evoria', $data);
+			$this->load->view('user/pesanan_saya', $data);
+			$this->load->view('templates/profile_footer');
+		} else {
+			$data = [
+				'id_jasa' => htmlspecialchars($this->input->post('id_jasa', true)),
+				'id_seller' => htmlspecialchars($this->input->post('id_seller', true)),
+				'id_user' => htmlspecialchars($this->input->post('id_user', true)),
+				'tgl_acara' => htmlspecialchars($this->input->post('tgl_acara', true)),
+				'tgl_order' => htmlspecialchars($this->input->post('tgl_order', true))
+			];
+			$this->db->insert('pemesanan', $data);
+
+			$this->session->set_flashdata('message', '
+				<div class="alert alert-success" role="alert">
+				Pesanan Telah Ditambahkan!
+				</div>');
+			redirect('user/pesanan_saya');
 		}
 	}
 }
