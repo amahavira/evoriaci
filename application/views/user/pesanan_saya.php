@@ -1,18 +1,18 @@
-<div class="container-fluid">
+<div class="container">
 	<?php
-	$querySeller = "SELECT pemesanan.*, users.nama_bisnis
-	FROM pemesanan JOIN users
-	ON pemesanan.id_seller = users.id
-	WHERE pemesanan.id_seller = users.id
-	AND pemesanan.id_user = $user[id]";
-	$seller = $this->db->query($querySeller)->result_array();
+	// $querySeller = "SELECT pemesanan.*, users.nama_bisnis
+	// FROM pemesanan JOIN users
+	// ON pemesanan.id_seller = users.id
+	// WHERE pemesanan.id_seller = users.id
+	// AND pemesanan.id_user = $user[id]";
+	// $seller = $this->db->query($querySeller)->result_array();
 
 	$queryUser = "SELECT pemesanan.*, jasa.nama, users.name
 	FROM pemesanan 
 	JOIN jasa ON pemesanan.id_jasa = jasa.id
 	JOIN users ON pemesanan.id_user = users.id
 	WHERE pemesanan.id_user = $user[id]
-	ORDER BY id DESC";
+	ORDER BY status ASC";
 	$quser = $this->db->query($queryUser)->result_array();
 	?>
 	<h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
@@ -34,8 +34,6 @@
 						<th scope="col">No</th>
 						<th scope="col">ID Pesanan</th>
 						<th scope="col">Nama Pesanan</th>
-						<th scope="col">Nama Pemesan</th>
-						<th scope="col">Nama EO</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
 						<th scope="col">Status</th>
@@ -49,14 +47,47 @@
 							<th scope="row"><?= $i++; ?></th>
 							<td><?= $row['id']; ?></td>
 							<td><?= $row['nama']; ?></td>
-							<td><?= $row['name']; ?></td>
-							<td><?= $seller[0]['nama_bisnis']; ?></td>
 							<td><?= $row['tgl_order']; ?></td>
 							<td><?= $row['tgl_acara']; ?></td>
-							<td><?= $row['status']; ?></td>
+							<td><?php if ($row['status'] == 0) {
+									echo "Menunggu Konfirmasi";
+								}; ?>
+								<?php if ($row['status'] == 1) {
+									echo "Menunggu Pembayaran";
+								}; ?>
+								<?php if ($row['status'] == 2) {
+									echo "Menunggu Konfirmasi Pembayaran";
+								}; ?>
+								<?php if ($row['status'] == 3) {
+									echo "Pesanan Diproses";
+								}; ?>
+								<?php if ($row['status'] == 4) {
+									echo "Menunggu Konfirmasi Selesai";
+								}; ?>
+								<?php if ($row['status'] == 5) {
+									echo "Pesanan Selesai";
+								}; ?>
+								<?php if ($row['status'] == 6) {
+									echo "Pesanan Dibatalkan";
+								}; ?></td>
 							<td>
-								<a href="" class="badge badge-success">edit</a>
-								<a href="" class="badge badge-danger">delete</a>
+								<?php if ($row['status'] == 0) : ?>
+									<?= form_open_multipart('user/batal_user'); ?>
+									<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
+									<input type="hidden" class="form-control" name="status" id="status" value="6">
+									<button type="submit" class="badge badge-danger" style="margin-right: 5px;">Batalkan</button>
+									</form>
+								<?php endif; ?>
+								<?php if ($row['status'] == 1) : ?>
+									<a href="<?= base_url(); ?>user/payment/<?= $row['id'] ?>" class="badge badge-success" style="margin-right: 5px;">Lakukan Pembayaran</a>
+								<?php endif; ?>
+								<?php if ($row['status'] == 4) : ?>
+									<?= form_open_multipart('user/konfirmasi_selesai_user'); ?>
+									<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
+									<input type="hidden" class="form-control" name="status" id="status" value="5">
+									<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
+									</form>
+								<?php endif; ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>

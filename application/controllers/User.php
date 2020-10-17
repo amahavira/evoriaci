@@ -170,7 +170,7 @@ class User extends CI_Controller
 		$data['judul'] = 'EVORIA - Pembayaran';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$tampilp = $this->TampilModel->getTampilJasa($id);
+		$tampilp = $this->TampilModel->getTampilPayment($id);
 		$data['tampilp'] = $tampilp;
 		$this->load->view('templates/header_evoria', $data);
 		$this->load->view('templates/carousel_home');
@@ -461,6 +461,17 @@ class User extends CI_Controller
 		$this->load->view('seller/pesanan', $data);
 		$this->load->view('templates/profile_footer');
 	}
+
+	public function tampil_pesanan_saya()
+	{
+		$data['judul'] = 'Pesanan Saya';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('user/pesanan_saya', $data);
+		$this->load->view('templates/profile_footer');
+	}
+
 	public function pesanan_saya()
 	{
 		$data['judul'] = 'Pesanan Saya';
@@ -490,5 +501,177 @@ class User extends CI_Controller
 				</div>');
 			redirect('user/pesanan_saya');
 		}
+	}
+
+	//Upload Bukti Bayar
+	public function upload_bukti()
+	{
+		$data['judul'] = 'Pesanan Saya';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['pesanan'] = $this->PesananModel->getPesanan();
+
+		$this->form_validation->set_rules('bukti_bayar', 'Bukti Bayar', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header_evoria', $data);
+			$this->load->view('user/pesanan_saya');
+			$this->load->view('templates/profile_footer');
+		} else {
+			$id = $this->input->post('id');
+
+			$uploadGambar = $_FILES['bukti_bayar']['name'];
+			if ($uploadGambar) {
+				$config['upload_path'] = './assets/bukti/';
+				$config['allowed_types']        = 'jpeg|jpg|png|PNG';
+				$config['max_size']             = 10000;
+				$config['max_width']            = 10000;
+				$config['max_height']           = 10000;
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('bukti_bayar')) {
+					$bukti_bayar = $this->upload->data('file_name');
+					$this->db->set('bukti_bayar', $bukti_bayar);
+					$this->db->where('id', $id);
+					$this->db->update('pemesanan');
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+
+			$this->session->set_flashdata('message', '
+					<div class="alert alert-success" role="alert">
+					Bukti Pembayaran Berhasil Diupload
+					</div>');
+			redirect('user/tampil_pesanan_saya');
+		}
+	}
+
+	//Konfirmasi pesanan
+	public function konfirmasi()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Pesanan Dikonfirmasi
+            </div>');
+		redirect('user/pesanan');
+	}
+
+	public function pembayaran()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Pembayaran Telah Dilakukan
+            </div>');
+		redirect('user/pesanan_saya');
+	}
+
+	public function konfirmasi_bayar()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-success" role="alert">
+		Pembayaran Dikonfirmasi
+		</div>');
+		redirect('user/pesanan');
+	}
+
+	public function konfirmasi_selesai_seller()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-success" role="alert">
+		Pesanan Telah Selesai
+		</div>');
+		redirect('user/pesanan');
+	}
+
+	public function konfirmasi_selesai_user()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-success" role="alert">
+		Pesanan Telah Selesai
+		</div>');
+		redirect('user/pesanan_saya');
+	}
+
+	public function batal_seller()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+			<div class="alert alert-danger" role="alert">
+				Pesanan Dibatalkan
+			</div>');
+		redirect('user/pesanan');
+	}
+
+	public function batal_user()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+			<div class="alert alert-danger" role="alert">
+				Pesanan Dibatalkan
+			</div>');
+		redirect('user/pesanan_saya');
 	}
 }

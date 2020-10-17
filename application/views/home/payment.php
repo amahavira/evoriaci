@@ -1,32 +1,45 @@
 <script src="https://kit.fontawesome.com/be4d5ec7e7.js" crossorigin="anonymous"></script>
 
 <?php
-$id_jasa = $tampilp->id;
-$queryJasa = "SELECT jasa.*, users.*
-FROM jasa JOIN users
-ON jasa.id_seller = users.id
-WHERE jasa.id = $id_jasa";
+$id_pesanan = $tampilp->id;
+$queryJasa = "SELECT jasa.*, users.*, pemesanan.*
+FROM jasa 
+JOIN users ON jasa.id_seller = users.id
+JOIN pemesanan ON jasa.id = pemesanan.id_jasa
+WHERE pemesanan.id = $id_pesanan";
 $jasa = $this->db->query($queryJasa)->result_array();
+
+// $queryJasa = "SELECT jasa.*, users.*
+// FROM jasa JOIN users
+// ON jasa.id_seller = users.id
+// WHERE jasa.id = $id_jasa";
+// $jasa = $this->db->query($queryJasa)->result_array();
 
 $id_user = $user['id'];
 $queryUser = "SELECT * FROM users WHERE id = $id_user";
-
 $user = $this->db->query($queryUser)->result_array();
+
+// $qrUser = "SELECT pemesanan.*, jasa.nama, users.name
+// 	FROM pemesanan 
+// 	JOIN jasa ON pemesanan.id_jasa = jasa.id
+// 	JOIN users ON pemesanan.id_user = users.id
+// 	WHERE pemesanan.id_user = $id_user";
+// $quser = $this->db->query($qrUser)->result_array();
 ?>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<div class="card mb-3" style=" border-radius: 10px; width: 100%">
 			<div class="row no-gutters" style="margin: 10px">
 				<div class="col-md-3">
-					<img src="<?= base_url('assets/img/jasa/') . $tampilp->gambar; ?>" class="card-img" alt="Responsive image" style="height: 150px; width: auto; border-radius: 5%; margin-left: 10%;">
+					<img src="<?= base_url('assets/img/jasa/') . $jasa[0]['gambar']; ?>" class="card-img" alt="Responsive image" style="height: 150px; width: auto; border-radius: 5%; margin-left: 10%;">
 				</div>
 				<div class="col-md-9">
 					<div class="card-body">
-						<h4 class="card-title font-weight-bold" style="color: #7E4A9E"><?= $tampilp->nama ?></h4>
+						<h4 class="card-title font-weight-bold" style="color: #7E4A9E"><?= $jasa[0]['nama'] ?></h4>
 						<!--  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
 						<p class="card-text"><small class="text-muted">By <?= $jasa[0]['nama_bisnis']; ?></small></p>
 						<i class="fas fa-map-marker-alt" style="color: red"></i>
-						<span style="font-size: 13px"> <?= $tampilp->lokasi ?></span>
+						<span style="font-size: 13px"> <?= $jasa[0]['lokasi'] ?></span>
 
 						<style type="text/css">
 							.checked {
@@ -112,14 +125,14 @@ $user = $this->db->query($queryUser)->result_array();
 						1. Pihak <b>Pertama</b> memberikan fasilitas acara yaitu :
 					</p>
 					<ul class="list-group">
-						<li class="list-group-item"><?= $this->typography->auto_typography($tampilp->deskripsi); ?></li>
+						<li class="list-group-item"><?= $this->typography->auto_typography($jasa[0]['deskripsi']); ?></li>
 					</ul>
 					<hr>
 					<p style="text-align: justify; margin: 10px">
 						2. Pihak <b>Kedua</b> mentaati syarat dan ketentuan yaitu :
 					</p>
 					<ul class="list-group">
-						<li class="list-group-item"><?= $this->typography->auto_typography($tampilp->syarat); ?></li>
+						<li class="list-group-item"><?= $this->typography->auto_typography($jasa[0]['syarat']); ?></li>
 					</ul>
 					<hr>
 				</div>
@@ -152,7 +165,7 @@ $user = $this->db->query($queryUser)->result_array();
 					<label><b>Rincian Biaya</b></label>
 					<table class="table">
 						<tr>
-							<td><?= $tampilp->nama ?></td>
+							<td><?= $jasa[0]['nama'] ?></td>
 							<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
 						</tr>
 					</table>
@@ -189,7 +202,7 @@ $user = $this->db->query($queryUser)->result_array();
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content" id="pay" style="border-radius: 10px">
 					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
-						<td><?= $tampilp->nama ?> </td>
+						<td><?= $jasa[0]['nama'] ?> </td>
 						<td><span class="text-right">
 								<h4>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</h4>
 							</span></td>
@@ -265,7 +278,8 @@ $user = $this->db->query($queryUser)->result_array();
 							$(document).ready(function() {
 								$("#tombol").click(function() {
 									$("#pay").hide();
-									$("#sukses").show();
+									$("#upload").show();
+									$("#sukses").hide();
 								});
 							});
 						</script>
@@ -276,6 +290,54 @@ $user = $this->db->query($queryUser)->result_array();
 						</div>
 					</div>
 				</div>
+
+				<!-- Modal Add Product-->
+				<div class="modal-content" id="upload" style="display: none; border-radius: 10px">
+					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
+						<h4>Upload Bukti Bayar</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<?= form_open_multipart('user/upload_bukti'); ?>
+						<div class="card fixed" style="border-radius: 10px">
+							<div class="card-body">
+								<hr>
+								<label><b>Rincian Biaya</b></label>
+								<table class="table">
+									<tr>
+										<td><?= $jasa[0]['nama'] ?></td>
+										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
+									</tr>
+								</table>
+								<hr>
+								<div class="form-group">
+									<input type="hidden" class="form-control" name="id" id="id" value="<?= $id_pesanan; ?>">
+									<div class="custom-file">
+										<input type="file" class="custom-file-input" id="bukti_bayar" name="bukti_bayar" required>
+										<label class="custom-file-label text-left" for="bukti_bayar">Pilih Foto</label>
+									</div>
+								</div>
+								<hr>
+								<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+								<!-- <script>
+									$(document).ready(function() {
+										$("#tombol1").click(function() {
+											$("#pay").hide();
+											$("#upload").hide();
+											$("#sukses").show();
+										});
+									});
+								</script> -->
+								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Pesan Sekarang</button>
+							</div>
+						</div>
+						</form>
+
+					</div>
+				</div>
+				<!-- End Modal Add Product-->
 
 				<div class="modal-content" id="sukses" style="display: none; border-radius: 10px">
 					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
@@ -303,7 +365,7 @@ $user = $this->db->query($queryUser)->result_array();
 								<label><b>Rincian Biaya</b></label>
 								<table class="table">
 									<tr>
-										<td> <?= $tampilp->nama ?> </td>
+										<td> <?= $jasa[0]['nama'] ?> </td>
 										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
 									</tr>
 								</table>
@@ -313,8 +375,11 @@ $user = $this->db->query($queryUser)->result_array();
 								<label>LUNAS</label>
 								<hr>
 								<div class="container text-center">
-									<!-- <a href="<?php echo base_url() ?>home/index" class="btn btn-outline-light" style="background-color: #7E4A9E">Kembali</a> -->
-									<a href="<?php echo base_url() ?>user/evoria" class="btn btn-outline-light" style="background-color: #7E4A9E">Kembali</a>
+									<?= form_open_multipart('user/pembayaran'); ?>
+									<input type="hidden" class="form-control" name="id" id="id" value="<?= $jasa[0]['id']; ?>">
+									<input type="hidden" class="form-control" name="status" id="status" value="2">
+									<button type="submit" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</button>
+									</form>
 								</div>
 							</div>
 						</div>
