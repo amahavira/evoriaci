@@ -31,6 +31,7 @@
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
 						<th scope="col">Status</th>
+						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
@@ -65,6 +66,13 @@
 								<?php if ($row['status'] == 6) {
 									echo "Pesanan Dibatalkan";
 								}; ?></td>
+							<td>
+								<?php if ($row['status'] >= 2) : ?>
+									<a target="_blank" href="<?= base_url() ?>assets/bukti/<?= $row['bukti_bayar']; ?>">
+										<img src="<?= base_url('assets/bukti/') . $row['bukti_bayar']; ?>" class="img-thumbnail" width="160" height="160"></img>
+									</a>
+								<?php endif; ?>
+							</td>
 							<td>
 								<?php if ($row['status'] == 0) : ?>
 									<?= form_open_multipart('user/konfirmasi'); ?>

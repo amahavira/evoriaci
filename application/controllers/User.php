@@ -506,46 +506,50 @@ class User extends CI_Controller
 	//Upload Bukti Bayar
 	public function upload_bukti()
 	{
-		$data['judul'] = 'Pesanan Saya';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pesanan'] = $this->PesananModel->getPesanan();
 
-		$this->form_validation->set_rules('bukti_bayar', 'Bukti Bayar', 'required');
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$uploadGambar = $_FILES['bukti_bayar']['name'];
+		if ($uploadGambar) {
+			$config['upload_path'] = './assets/bukti/';
+			$config['allowed_types']        = 'jpeg|jpg|png|PNG';
+			$config['max_size']             = 10000;
+			$config['max_width']            = 10000;
+			$config['max_height']           = 10000;
 
-		if ($this->form_validation->run() == false) {
-			$this->load->view('templates/header_evoria', $data);
-			$this->load->view('user/pesanan_saya');
-			$this->load->view('templates/profile_footer');
-		} else {
-			$id = $this->input->post('id');
+			$this->load->library('upload', $config);
 
-			$uploadGambar = $_FILES['bukti_bayar']['name'];
-			if ($uploadGambar) {
-				$config['upload_path'] = './assets/bukti/';
-				$config['allowed_types']        = 'jpeg|jpg|png|PNG';
-				$config['max_size']             = 10000;
-				$config['max_width']            = 10000;
-				$config['max_height']           = 10000;
-
-				$this->load->library('upload', $config);
-
-				if ($this->upload->do_upload('bukti_bayar')) {
-					$bukti_bayar = $this->upload->data('file_name');
-					$this->db->set('bukti_bayar', $bukti_bayar);
-					$this->db->where('id', $id);
-					$this->db->update('pemesanan');
-				} else {
-					echo $this->upload->display_errors();
-				}
+			if ($this->upload->do_upload('bukti_bayar')) {
+				$bukti_bayar = $this->upload->data('file_name');
+				$this->db->set('status', $status);
+				$this->db->set('bukti_bayar', $bukti_bayar);
+				$this->db->where('id', $id);
+				$this->db->update('pemesanan');
+			} else {
+				echo $this->upload->display_errors();
 			}
+		}
 
-			$this->session->set_flashdata('message', '
+		$this->session->set_flashdata('message', '
 					<div class="alert alert-success" role="alert">
 					Bukti Pembayaran Berhasil Diupload
 					</div>');
-			redirect('user/tampil_pesanan_saya');
-		}
+		redirect('user/pesanan_saya');
+	}
+
+	public function invoice($id)
+	{
+		$data['judul'] = 'EVORIA - Invoice';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$tampilp = $this->TampilModel->getTampilPayment($id);
+		$data['tampilp'] = $tampilp;
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('templates/carousel_home');
+		$this->load->view('home/invoice', $data);
+		$this->load->view('templates/footer');
 	}
 
 	//Konfirmasi pesanan

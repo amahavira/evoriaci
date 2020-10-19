@@ -314,14 +314,15 @@ $user = $this->db->query($queryUser)->result_array();
 								<hr>
 								<div class="form-group">
 									<input type="hidden" class="form-control" name="id" id="id" value="<?= $id_pesanan; ?>">
+									<input type="hidden" class="form-control" name="status" id="status" value="2">
 									<div class="custom-file">
 										<input type="file" class="custom-file-input" id="bukti_bayar" name="bukti_bayar" required>
 										<label class="custom-file-label text-left" for="bukti_bayar">Pilih Foto</label>
 									</div>
 								</div>
 								<hr>
-								<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-								<!-- <script>
+								<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+								<script>
 									$(document).ready(function() {
 										$("#tombol1").click(function() {
 											$("#pay").hide();
@@ -330,7 +331,7 @@ $user = $this->db->query($queryUser)->result_array();
 										});
 									});
 								</script> -->
-								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Pesan Sekarang</button>
+								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Upload Bukti Bayar</button>
 							</div>
 						</div>
 						</form>
@@ -339,7 +340,7 @@ $user = $this->db->query($queryUser)->result_array();
 				</div>
 				<!-- End Modal Add Product-->
 
-				<div class="modal-content" id="sukses" style="display: none; border-radius: 10px">
+				<!-- <div class="modal-content" id="sukses" style="display: none; border-radius: 10px">
 					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
 						<h4>INVOICE PEMESANAN</h4>
 					</div>
@@ -384,7 +385,7 @@ $user = $this->db->query($queryUser)->result_array();
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
