@@ -113,7 +113,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 					</div>
 					<div class="modal-footer text-center">
 						<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a> -->
-						<a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a>
+						<button data-dismiss="modal" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</button>
 					</div>
 				</div>
 			</div>
