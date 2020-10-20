@@ -144,6 +144,18 @@ class User extends CI_Controller
 		$this->load->view('home/index');
 		$this->load->view('templates/footer', $data);
 	}
+	public function search()
+	{
+		$data['judul'] = 'EVORIA - Event Organizer';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$keyword = $this->input->post('keyword');
+		$data['jasa'] = $this->TampilModel->getKeyword($keyword);
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('home/search', $data);
+		$this->load->view('templates/footer', $data);
+	}
 	public function inspiration()
 	{
 		$data['judul'] = 'EVORIA - Inspirasi';

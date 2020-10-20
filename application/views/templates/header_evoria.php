@@ -102,9 +102,12 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<div class="col-9">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
+					<div class="input-group">
+						<div class="col-md-10">
+							<?= form_open_multipart('user/search'); ?>
+							<input type="text" class="form-control" name="keyword" id="keyword" placeholder="Search">
+							<!-- <button type="submit" class="btn tmbl-ungu" name="submit">Cari</button> -->
+							</form>
 						</div>
 					</div>
 				</div>

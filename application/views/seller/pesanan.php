@@ -475,7 +475,7 @@
 										echo "Pesanan Dibatalkan";
 									}; ?></td>
 								<td>
-									<?php if ($row['status'] >= 2) : ?>
+									<?php if ($row['status'] != 6) : ?>
 										<a target="_blank" href="<?= base_url() ?>assets/bukti/<?= $row['bukti_bayar']; ?>">
 											<img src="<?= base_url('assets/bukti/') . $row['bukti_bayar']; ?>" class="img-thumbnail" width="160" height="160"></img>
 										</a>
