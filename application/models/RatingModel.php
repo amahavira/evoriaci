@@ -8,7 +8,7 @@ class RatingModel extends CI_Model
 		$query = "SELECT pemesanan.rating, users.id 
 		FROM pemesanan 
 		JOIN users ON pemesanan.id_seller = users.id 
-		WHERE pemesanan.id_seller = $id";
+		WHERE pemesanan.id_seller = '$id'";
 
 		return $this->db->query($query)->result_array();
 	}

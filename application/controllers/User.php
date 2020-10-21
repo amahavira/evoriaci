@@ -139,7 +139,6 @@ class User extends CI_Controller
 		$data['judul'] = 'EVORIA - Event Organizer';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
-
 		$this->load->view('templates/header_evoria', $data);
 		$this->load->view('templates/carousel_home1');
 		$this->load->view('home/index');
@@ -238,8 +237,24 @@ class User extends CI_Controller
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
+		$data['rating'] = $this->RatingModel->getRating($data['user']['id']);
+		$data['ratings'] = 0;
+		$pembagi = 0;
+
+		foreach ($data['rating'] as $r) {
+			if ($r['rating'] > 0) {
+				$data['ratings'] += floatval($r['rating']);
+				$pembagi += 1;
+			}
+		}
+
+		if ($pembagi > 0) {
+			$data['ratings'] = $data['ratings'] / $pembagi;
+		}
+		$data['pembagi'] = $pembagi;
+
 		$this->load->view('templates/header_evoria', $data);
-		$this->load->view('seller/profile');
+		$this->load->view('seller/profile', $data);
 		$this->load->view('templates/seller_footer');
 	}
 	public function edit_profile_seller()
@@ -726,29 +741,29 @@ class User extends CI_Controller
 		redirect('user/pesanan_saya');
 	}
 
-	public function tampil_rating($id)
-	{
-		$data['user'] = $this->db->get_where('users', ['email' =>
-		$this->session->userdata('email')])->row_array();
+	// public function tampil_rating($id)
+	// {
+	// 	$data['user'] = $this->db->get_where('users', ['email' =>
+	// 	$this->session->userdata('email')])->row_array();
 
-		$data['rating'] = $this->RatingModel->getRating($id);
+	// 	$data['rating'] = $this->RatingModel->getRating($id);
 
-		$data['ratings'] = 0;
-		$pembagi = 0;
+	// 	$data['ratings'] = 0;
+	// 	$pembagi = 0;
 
-		foreach ($data['rating'] as $r) {
-			if ($r['rating'] > 0) {
-				$data['ratings'] += floatval($r['rating']);
-				$pembagi += 1;
-			}
-		}
+	// 	foreach ($data['rating'] as $r) {
+	// 		if ($r['rating'] > 0) {
+	// 			$data['ratings'] += floatval($r['rating']);
+	// 			$pembagi += 1;
+	// 		}
+	// 	}
 
-		if ($pembagi > 0) {
-			$data['ratings'] = $data['ratings'] / $pembagi;
-		}
-		$data['pembagi'] = $pembagi;
+	// 	if ($pembagi > 0) {
+	// 		$data['ratings'] = $data['ratings'] / $pembagi;
+	// 	}
+	// 	$data['pembagi'] = $pembagi;
 
-		// $this->load->view('seller/test_rating', $data);
-		$this->load->view('home/p_seller', $data);
-	}
+	// 	// $this->load->view('seller/test_rating', $data);
+	// 	$this->load->view('home/p_seller', $data);
+	// }
 }

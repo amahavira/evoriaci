@@ -1,5 +1,9 @@
 <script src="https://kit.fontawesome.com/be4d5ec7e7.js" crossorigin="anonymous"></script>
-
+<style type="text/css">
+	.checked {
+		color: orange;
+	}
+</style>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<div class="card mb-3" style=" border-radius: 10px; width: 100%">
@@ -14,20 +18,12 @@
 						</div>
 						<div class="col-md-12">
 							<i class="fas fa-map-marker-alt" style="color: red"></i>
-							<span style="font-size: 13px"><b> <?= $user['kota']; ?> </b></span>
+							<span style="font-size: 13px"><b>Kota <?= $user['kota']; ?> </b></span>
 
-							<style type="text/css">
-								.checked {
-									color: orange;
-								}
-							</style>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
 
-							<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(1256)</div>
+							<span class="fa fa-star checked"></span>
+							<div class="d-inline checked" style="font-size: 12px; font-weight: bold;"><?= $ratings  ?>/5</div>
+							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?>)</div>
 							<span class="btn tmbl-ungu">Evoria Partner</span>
 							<a class="btn tmbl-ungu1" href="<?= base_url('user/data_bisnis'); ?>">Edit Profile Bisnis</a>
 						</div>
