@@ -1,4 +1,9 @@
 <script src="https://kit.fontawesome.com/be4d5ec7e7.js" crossorigin="anonymous"></script>
+<style type="text/css">
+	.checked {
+		color: orange;
+	}
+</style>
 
 <div class="container">
 	<div class="row justify-content-md-center">
@@ -23,12 +28,8 @@
 								}
 							</style>
 							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-
-							<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(1256)</div>
+							<div class="d-inline checked" style="font-size: 12px; font-weight: bold;"><?= $ratings  ?>/5</div>
+							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?>)</div>
 							<button type="button" class="btn tmbl-ungu">Evoria Partner</button>
 						</div>
 						<div class="col-md-12">
@@ -89,11 +90,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 								<!-- <del style="font-size: 12px">Rp. 55.000.000</del> -->
 							</h6>
 							<div class="col-md-12" style="padding-left: 0px">
-								<style type="text/css">
-									.checked {
-										color: orange;
-									}
-								</style>
+
 								<span class="fa fa-star checked"></span>
 								<span class="checked" style="font-size: 12px; font-weight: bold;">5/5</span>
 

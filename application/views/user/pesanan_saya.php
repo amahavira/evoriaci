@@ -323,6 +323,9 @@
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
 										</form>
 									<?php endif; ?>
+									<?php if ($row['status'] == 5 && $row['rating'] <= 0) : ?>
+										<a data-toggle="modal" data-target="#ratingModal<?= $row['id']; ?>" href="" class="badge badge-warning">Beri Rating</a>
+									<?php endif; ?>
 								</td>
 							</tr>
 						<?php endif; ?>
@@ -413,4 +416,39 @@
 	<hr>
 	<br>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ratingModal<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ratingModal" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ratingModal">Beri Rating</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<?= form_open_multipart('user/rating'); ?>
+			<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="rating"><strong>Berikan Skor Rating Pelayanan</strong></label>
+					<select class="form-control" name="rating" id="rating" required>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</div>
+
+			</form>
+
+		</div>
+	</div>
 </div>

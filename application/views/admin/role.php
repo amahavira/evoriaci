@@ -31,7 +31,7 @@
 							<td><?= $row['role']; ?></td>
 							<td>
 								<a href="<?= base_url('admin/roleaccess/') . $row['id']; ?>" class="badge badge-warning">access</a>
-								<a data-toggle="modal" data-target="#editRoleModal" href="" class="badge badge-success">edit</a>
+								<a data-toggle="modal" data-target="#editRoleModal<?= $row['id']; ?>" href="" class="badge badge-success">edit</a>
 								<a href="<?= base_url(); ?>admin/hapusRole/<?= $row['id'] ?>" class="badge badge-danger">delete</a>
 							</td>
 						</tr>
@@ -70,30 +70,33 @@
 	</div>
 </div>
 
-<div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog" aria-labelledby="editRoleModal" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="editRoleModal">Edit Role</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form action="<?= base_url('admin/editRole'); ?>" method="POST">
-				<div class="modal-body">
-					<div class="form-group">
-						<input value="<?= $row['id']; ?>" type="text" class="form-control" id="id" name="id" hidden>
-						<input value="<?= $row['role']; ?>" type="text" class="form-control" id="role" name="role" placeholder="Role Name">
-						<?= form_error('role', '<small class="text-danger pl-3">', '</small>'); ?>
+<?php $no = 0;
+foreach ($role as $row) : $no++; ?>
+	<div class="modal fade" id="editRoleModal<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editRoleModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="editRoleModal">Edit Role</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="<?= base_url('admin/editRole'); ?>" method="POST">
+					<div class="modal-body">
+						<div class="form-group">
+							<input value="<?= $row['id']; ?>" type="text" class="form-control" id="id" name="id" hidden>
+							<input value="<?= $row['role']; ?>" type="text" class="form-control" id="role" name="role" placeholder="Role Name">
+							<?= form_error('role', '<small class="text-danger pl-3">', '</small>'); ?>
+						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Edit</button>
-				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Edit</button>
+					</div>
 
-			</form>
+				</form>
 
+			</div>
 		</div>
 	</div>
-</div>
+<?php endforeach; ?>

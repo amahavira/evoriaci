@@ -52,6 +52,34 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function kategori()
+	{
+		$data['judul'] = 'Kategori';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['kategori'] = $this->db->get('kategori_jasa')->result_array();
+
+		$this->form_validation->set_rules('nama', 'Kategori', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/profile_header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('admin/kategori', $data);
+			$this->load->view('templates/profile_footer');
+		} else {
+			$data = [
+				'nama' => $this->input->post('nama')
+			];
+			$this->db->insert('kategori_jasa', $data);
+			$this->session->set_flashdata('message', '
+                    <div class="alert alert-success" role="alert">
+                        New Category added!
+                    </div>');
+			redirect('admin/kategori');
+		}
+	}
+
 	public function roleAccess($role_id)
 	{
 		$data['judul'] = 'Role Access';
@@ -124,9 +152,46 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function editKategori()
+	{
+		$data['judul'] = 'Kategori';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['kategori'] = $this->db->get('kategori_jasa')->result_array();
+
+		$this->form_validation->set_rules('nama', 'Kategori', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/profile_header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('admin/kategori', $data);
+			$this->load->view('templates/profile_footer');
+		} else {
+			$id = $this->input->post('id');
+			$nama = $this->input->post('nama');
+
+			$this->db->set('nama', $nama);
+			$this->db->where('id', $id);
+			$this->db->update('kategori_jasa');
+
+			$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Kategori Berhasil Di-Edit
+            </div>');
+			redirect('admin/kategori');
+		}
+	}
+
 	public function hapusRole($id)
 	{
 		$this->HapusModel->hapusRole($id);
 		redirect('admin/role');
+	}
+
+	public function hapusKategori($id)
+	{
+		$this->HapusModel->hapusKategori($id);
+		redirect('admin/kategori');
 	}
 }

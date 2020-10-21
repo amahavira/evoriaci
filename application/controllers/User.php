@@ -6,12 +6,10 @@ class User extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		// if (!$this->session->userdata('email')) {
-		// 	redirect('auth');
-		// }
 		is_logged_in();
 		$this->load->model('KategoriModel');
 		$this->load->model('TampilModel');
+		$this->load->model('RatingModel');
 		$this->load->model('PesananModel');
 		$this->load->model('HapusModel');
 		$this->load->library('typography');
@@ -52,7 +50,9 @@ class User extends CI_Controller
 
 			if ($uploadImage) {
 				$config['allowed_types'] = 'jpg|png';
-				$config['max_size'] = '5000';
+				$config['max_size']             = 10000;
+				$config['max_width']            = 10000;
+				$config['max_height']           = 10000;
 				$config['upload_path'] = './assets/img/profile/';
 
 				$this->load->library('upload', $config);
@@ -139,6 +139,7 @@ class User extends CI_Controller
 		$data['judul'] = 'EVORIA - Event Organizer';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
 		$this->load->view('templates/header_evoria', $data);
 		$this->load->view('templates/carousel_home1');
 		$this->load->view('home/index');
@@ -206,6 +207,22 @@ class User extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 		$tampil = $this->TampilModel->getTampilVendor($id);
 		$data['tampil'] = $tampil;
+
+		$data['rating'] = $this->RatingModel->getRating($id);
+		$data['ratings'] = 0;
+		$pembagi = 0;
+
+		foreach ($data['rating'] as $r) {
+			if ($r['rating'] > 0) {
+				$data['ratings'] += floatval($r['rating']);
+				$pembagi += 1;
+			}
+		}
+
+		if ($pembagi > 0) {
+			$data['ratings'] = $data['ratings'] / $pembagi;
+		}
+		$data['pembagi'] = $pembagi;
 		// $data['seller'] = $this->db->get_where('users', ['role_id' => 4]);
 
 		$this->load->view('templates/header_evoria', $data);
@@ -689,5 +706,49 @@ class User extends CI_Controller
 				Pesanan Dibatalkan
 			</div>');
 		redirect('user/pesanan_saya');
+	}
+
+	public function rating()
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$id = $this->input->post('id');
+		$rating = $this->input->post('rating');
+		$this->db->set('rating', $rating);
+		$this->db->where('id', $id);
+		$this->db->update('pemesanan');
+
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-success" role="alert">
+		Rating Telah Diberikan
+		</div>');
+		redirect('user/pesanan_saya');
+	}
+
+	public function tampil_rating($id)
+	{
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['rating'] = $this->RatingModel->getRating($id);
+
+		$data['ratings'] = 0;
+		$pembagi = 0;
+
+		foreach ($data['rating'] as $r) {
+			if ($r['rating'] > 0) {
+				$data['ratings'] += floatval($r['rating']);
+				$pembagi += 1;
+			}
+		}
+
+		if ($pembagi > 0) {
+			$data['ratings'] = $data['ratings'] / $pembagi;
+		}
+		$data['pembagi'] = $pembagi;
+
+		// $this->load->view('seller/test_rating', $data);
+		$this->load->view('home/p_seller', $data);
 	}
 }
