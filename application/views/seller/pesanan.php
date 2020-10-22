@@ -1,6 +1,6 @@
 <div class="container">
 	<?php
-	$queryUser = "SELECT pemesanan.*, jasa.nama, users.name
+	$queryUser = "SELECT pemesanan.*, jasa.nama, users.name, users.nohp
 	FROM pemesanan 
 	JOIN jasa ON pemesanan.id_jasa = jasa.id
 	JOIN users ON pemesanan.id_user = users.id
@@ -33,6 +33,7 @@
 						<th scope="col">Nama Pemesan</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
+						<th scope="col">Nomor Telepon Pemesan</th>
 						<th scope="col">Status</th>
 						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
@@ -49,6 +50,7 @@
 								<td><?= $row['name']; ?></td>
 								<td><?= $row['tgl_order']; ?></td>
 								<td><?= $row['tgl_acara']; ?></td>
+								<td><?= $row['nohp']; ?></td>
 								<td><?php if ($row['status'] == 0) {
 										echo "Menunggu Konfirmasi";
 									}; ?>
@@ -134,6 +136,7 @@
 						<th scope="col">Nama Pemesan</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
+						<th scope="col">Nomor Telepon Pemesan</th>
 						<th scope="col">Status</th>
 						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
@@ -150,6 +153,7 @@
 								<td><?= $row['name']; ?></td>
 								<td><?= $row['tgl_order']; ?></td>
 								<td><?= $row['tgl_acara']; ?></td>
+								<td><?= $row['nohp']; ?></td>
 								<td><?php if ($row['status'] == 0) {
 										echo "Menunggu Konfirmasi";
 									}; ?>
@@ -235,6 +239,7 @@
 						<th scope="col">Nama Pemesan</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
+						<th scope="col">Nomor Telepon Pemesan</th>
 						<th scope="col">Status</th>
 						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
@@ -251,6 +256,7 @@
 								<td><?= $row['name']; ?></td>
 								<td><?= $row['tgl_order']; ?></td>
 								<td><?= $row['tgl_acara']; ?></td>
+								<td><?= $row['nohp']; ?></td>
 								<td><?php if ($row['status'] == 0) {
 										echo "Menunggu Konfirmasi";
 									}; ?>
@@ -336,6 +342,7 @@
 						<th scope="col">Nama Pemesan</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
+						<th scope="col">Nomor Telepon Pemesan</th>
 						<th scope="col">Status</th>
 						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
@@ -352,6 +359,7 @@
 								<td><?= $row['name']; ?></td>
 								<td><?= $row['tgl_order']; ?></td>
 								<td><?= $row['tgl_acara']; ?></td>
+								<td><?= $row['nohp']; ?></td>
 								<td><?php if ($row['status'] == 0) {
 										echo "Menunggu Konfirmasi";
 									}; ?>
@@ -437,6 +445,7 @@
 						<th scope="col">Nama Pemesan</th>
 						<th scope="col">Tanggal Pesan</th>
 						<th scope="col">Tanggal Acara</th>
+						<th scope="col">Nomor Telepon Pemesan</th>
 						<th scope="col">Status</th>
 						<th scope="col">Bukti Pembayaran</th>
 						<th scope="col">Action</th>
@@ -453,6 +462,7 @@
 								<td><?= $row['name']; ?></td>
 								<td><?= $row['tgl_order']; ?></td>
 								<td><?= $row['tgl_acara']; ?></td>
+								<td><?= $row['nohp']; ?></td>
 								<td><?php if ($row['status'] == 0) {
 										echo "Menunggu Konfirmasi";
 									}; ?>

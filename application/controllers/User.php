@@ -208,20 +208,20 @@ class User extends CI_Controller
 		$data['tampil'] = $tampil;
 
 		$data['rating'] = $this->RatingModel->getRating($id);
-		$data['ratings'] = 0;
-		$pembagi = 0;
+		$data['ratings'] = 0; //inisiasi awal agar variabel tersebut bisa dilakukan perhitungan
+		$pembagi = 0; //inisiasi awal agar variabel tersebut bisa dilakukan perhitungan (pembagi = jumlah reviewer)
 
 		foreach ($data['rating'] as $r) {
 			if ($r['rating'] > 0) {
-				$data['ratings'] += floatval($r['rating']);
-				$pembagi += 1;
+				$data['ratings'] += floatval($r['rating']); //untuk menjumlahkan semua rating
+				$pembagi += 1; //untuk mencari jumlah pembagi selain yg nilai ratingnya 0
 			}
 		}
 
 		if ($pembagi > 0) {
-			$data['ratings'] = $data['ratings'] / $pembagi;
+			$data['ratings'] = round(($data['ratings'] / $pembagi), 1); //untuk error handling ketika tidak ada nilai rating yg lebih dari 0
 		}
-		$data['pembagi'] = $pembagi;
+		$data['pembagi'] = $pembagi; //untuk menampilkan jumlah reviewer ke view
 		// $data['seller'] = $this->db->get_where('users', ['role_id' => 4]);
 
 		$this->load->view('templates/header_evoria', $data);
@@ -238,20 +238,20 @@ class User extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 
 		$data['rating'] = $this->RatingModel->getRating($data['user']['id']);
-		$data['ratings'] = 0;
-		$pembagi = 0;
+		$data['ratings'] = 0; //inisiasi awal agar variabel tersebut bisa dilakukan perhitungan
+		$pembagi = 0; //inisiasi awal agar variabel tersebut bisa dilakukan perhitungan (pembagi = jumlah reviewer)
 
 		foreach ($data['rating'] as $r) {
 			if ($r['rating'] > 0) {
-				$data['ratings'] += floatval($r['rating']);
-				$pembagi += 1;
+				$data['ratings'] += floatval($r['rating']); //untuk menjumlahkan semua rating
+				$pembagi += 1; //untuk mencari jumlah pembagi selain yg nilai ratingnya 0
 			}
 		}
 
 		if ($pembagi > 0) {
-			$data['ratings'] = $data['ratings'] / $pembagi;
+			$data['ratings'] = round(($data['ratings'] / $pembagi), 1); //untuk error handling ketika tidak ada nilai rating yg lebih dari 0
 		}
-		$data['pembagi'] = $pembagi;
+		$data['pembagi'] = $pembagi; //untuk menampilkan jumlah reviewer ke view
 
 		$this->load->view('templates/header_evoria', $data);
 		$this->load->view('seller/profile', $data);
