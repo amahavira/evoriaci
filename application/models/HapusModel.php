@@ -23,6 +23,11 @@ class HapusModel extends CI_Model
 		return $this->db->delete('user_sub_menu', ['id' => $id]);
 	}
 
+	public function hapusInspirasi($id)
+	{
+		return $this->db->delete('inspirasi', ['id' => $id]);
+	}
+
 	public function hapusJasa($id)
 	{
 		return $this->db->delete('jasa', ['id' => $id]);

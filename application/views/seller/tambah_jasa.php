@@ -87,15 +87,7 @@
 												<p class="text-primary m-0 font-weight-bold">Data Paket</p>
 											</div>
 											<div class="card-body">
-												<!-- <div class="form-row">
-													<div class="col">
-														<div class="form-group">
-															<label for="id_seller"><strong>ID Seller</strong><br></label> -->
-												<!-- <input value="<?= $user['id']; ?>" class="form-control" type="text" id="id_seller" name="id_seller" disabled> -->
-												<input value="<?= set_value('id_seller' . $user['id']) . $user['id']; ?>" class="form-control" type="hidden" id="id_seller" name="id_seller">
-												<!-- </div>
-													</div>
-												</div> -->
+												<input value="<?= set_value('id_seller') . $user['id']; ?>" class="form-control" id="id_seller" name="id_seller" hidden>
 												<div class="form-row">
 													<div class="col">
 														<div class="form-group">

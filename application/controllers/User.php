@@ -156,13 +156,55 @@ class User extends CI_Controller
 		$this->load->view('home/search', $data);
 		$this->load->view('templates/footer', $data);
 	}
+	public function tambah_inspiration()
+	{
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$data['judul'] = 'EVORIA - Tambah Inspirasi';
+			$data['user'] = $this->db->get_where('users', ['email' =>
+			$this->session->userdata('email')])->row_array();
+			$this->load->view('templates/header_evoria', $data);
+			$this->load->view('seller/tambah_inspirasi');
+			$this->load->view('templates/seller_footer');
+		} else {
+
+			$config['upload_path'] = './assets/img/inspirasi/';
+			$config['allowed_types']        = 'jpeg|jpg|png|PNG';
+			$config['max_size']             = 10000;
+			$config['max_width']            = 10000;
+			$config['max_height']           = 10000;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('gambar')) {
+				echo $this->upload->display_errors();
+			} else {
+				$gambar = $this->upload->data('file_name');
+				$data = [
+					'id_seller' => htmlspecialchars($this->input->post('id_seller', true)),
+					'nama' => htmlspecialchars($this->input->post('nama', true)),
+					'gambar' => $gambar,
+					'date_created' => time()
+				];
+				$this->db->insert('inspirasi', $data);
+
+				$this->session->set_flashdata('message', '
+					<div class="alert alert-success" role="alert">
+					Data Berhasil Ditambahkan!
+					</div>');
+				redirect('user/tambah_inspiration');
+			}
+		}
+	}
 	public function inspiration()
 	{
 		$data['judul'] = 'EVORIA - Inspirasi';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
+		$data['tampil'] = $this->TampilModel->getTampilInspirasi();
 		$this->load->view('templates/header_evoria', $data);
-		$this->load->view('home/inspiration');
+		$this->load->view('home/inspiration', $data);
 		$this->load->view('templates/footer');
 	}
 	public function detail($id)
@@ -348,6 +390,70 @@ class User extends CI_Controller
 		$this->load->view('seller/edit_jasa', $data);
 		$this->load->view('templates/seller_footer');
 	}
+	public function tampil_edit_inspirasi($id)
+	{
+		$data['judul'] = 'Edit Inspirasi';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$editi = $this->TampilModel->getTampilEditInspirasi($id);
+		$data['editi'] = $editi;
+		$this->load->view('templates/header_evoria', $data);
+		$this->load->view('seller/edit_inspirasi', $data);
+		$this->load->view('templates/seller_footer');
+	}
+
+	public function edit_inspirasi()
+	{
+		$data['judul'] = 'Edit Inspirasi';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$id = $this->input->post('id');
+		$editi = $this->TampilModel->getEditInspirasi($id);
+		$data['editi'] = $editi;
+
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header_evoria', $data);
+			$this->load->view('seller/edit_inspirasi', $data);
+			$this->load->view('templates/seller_footer');
+		} else {
+			$nama = $this->input->post('nama');
+
+			//cek kalau ada gambar baru
+			$uploadGambar = $_FILES['gambar']['name'];
+			if ($uploadGambar) {
+				$config['upload_path'] = './assets/img/inspirasi/';
+				$config['allowed_types']        = 'jpeg|jpg|png|PNG';
+				$config['max_size']             = 10000;
+				$config['max_width']            = 10000;
+				$config['max_height']           = 10000;
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('gambar')) {
+					$oldFile = $data['editi']['gambar'];
+					if ($oldFile != ' ') {
+						unlink(FCPATH . '/assets/img/inspirasi/' . $oldFile);
+					}
+					$newFile = $this->upload->data('file_name');
+					$this->db->set('gambar', $newFile);
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+
+			$this->db->set('nama', $nama);
+			$this->db->where('id', $id);
+			$this->db->update('inspirasi');
+
+			$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Data Berhasil Diperbarui!
+            </div>');
+			redirect('user/profile_seller');
+		}
+	}
 
 	public function edit_jasa()
 	{
@@ -416,6 +522,18 @@ class User extends CI_Controller
             </div>');
 			redirect('user/profile_seller');
 		}
+	}
+
+	public function hapusInspirasi($id)
+	{
+		$hapusi = $this->TampilModel->getEditInspirasi($id);
+		$data['hapusi'] = $hapusi;
+		$oldFile = $data['hapusi']['gambar'];
+		if ($oldFile != ' ') {
+			unlink(FCPATH . '/assets/img/inspirasi/' . $oldFile);
+		}
+		$this->HapusModel->hapusInspirasi($id);
+		redirect('user/profile_seller');
 	}
 
 	public function hapusJasa($id)

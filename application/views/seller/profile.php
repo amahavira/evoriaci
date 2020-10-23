@@ -62,12 +62,21 @@
 // $id_seller = $this->session->userdata('id');
 $id_seller = $user['id'];
 $queryJasa = "SELECT * FROM jasa WHERE id_seller = $id_seller";
-
 $jasa = $this->db->query($queryJasa)->result_array();
+
+$queryInspirasi = "SELECT inspirasi.*, users.nama_bisnis, users.alamat, users.medsos
+FROM inspirasi JOIN users
+ON inspirasi.id_seller = users.id
+WHERE inspirasi.id_seller = $id_seller";
+$inspirasi = $this->db->query($queryInspirasi)->result_array();
+
+
 ?>
 
 <div class="container" style="padding-top:30px; border-radius: 10px; background-image: url(<?php echo base_url('assets/gambar/bg/fs.png') ?>)">
 	<div class="container">
+		<h4 style="color: #7E4A9E">Produk Jasa</h4>
+		<hr>
 		<div class="row">
 
 			<?php foreach ($jasa as $row) : ?>
@@ -102,6 +111,51 @@ $jasa = $this->db->query($queryJasa)->result_array();
 								<div class="row p-l-10 p-t-5">
 									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>user/tampil_edit_jasa/<?= $row['id'] ?>">Edit</a>
 									<a class="btn tmbl-merah" href="<?= base_url(); ?>user/hapusJasa/<?= $row['id'] ?>">Hapus</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+
+		</div>
+
+		<div style="text-align: center; color: #7E4A9E;">
+			<div class="spinner-border" role="status"></div><br>
+			<i>Memuat Paket Lainnya....</i>
+		</div>
+		<br>
+	</div>
+</div>
+<br>
+<div class="container" style="padding-top:30px; border-radius: 10px; background-image: url(<?php echo base_url('assets/gambar/bg/fs.png') ?>)">
+	<div class="container">
+		<h4 style="color: #7E4A9E">Inspirasi</h4>
+		<hr>
+		<div class="row">
+			<?php foreach ($inspirasi as $row) : ?>
+				<div class="col-lg-3 col-sm-6 portfolio-item">
+					<div class="card" style="border-radius: 10px">
+						<a target="_blank" href="<?= base_url() ?>assets/img/inspirasi/<?= $row['gambar']; ?>">
+							<img src="<?= base_url('assets/img/inspirasi/') . $row['gambar']; ?>" class="card-img-top" alt="Responsive image" style="border-radius: 10px 10px 0px 0px">
+						</a>
+						<div class="card-body">
+							<i class="fas fa-map-marker-alt" style="color: red"></i>
+							<span style="font-size: 13px"><?= $row['alamat']; ?></span>
+							<hr style="margin-top:6px;margin-bottom: 6px">
+							<div class="row">
+								<div class="col-md-12" style="padding-left: auto">
+									<h5 class="font-weight-bold" style="color: #7E4A9E; margin-bottom: 6px;"><?= $row['nama']; ?></h5>
+									<p style="font-size: 12px; margin-bottom: 10px;">By <?= $row['nama_bisnis']; ?>
+									</p>
+								</div>
+							</div>
+							<div class="col-md-12 pt-3" style="padding-left: 0px">
+								<p class="card-text">Social Media :</p>
+								<p class="card-text"><?= $row['medsos'] ?></p>
+								<div class="row p-l-10 p-t-5">
+									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>user/tampil_edit_inspirasi/<?= $row['id'] ?>">Edit</a>
+									<a class="btn tmbl-merah" href="<?= base_url(); ?>user/hapusInspirasi/<?= $row['id'] ?>">Hapus</a>
 								</div>
 							</div>
 						</div>
