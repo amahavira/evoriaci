@@ -139,6 +139,7 @@ class User extends CI_Controller
 		$data['judul'] = 'EVORIA - Event Organizer';
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
+		$data['kategori_jasa'] = $this->KategoriModel->getdata();
 		$this->load->view('templates/header_evoria', $data);
 		$this->load->view('templates/carousel_home1');
 		$this->load->view('home/index');

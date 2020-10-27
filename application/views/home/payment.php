@@ -9,22 +9,9 @@ JOIN pemesanan ON jasa.id = pemesanan.id_jasa
 WHERE pemesanan.id = $id_pesanan";
 $jasa = $this->db->query($queryJasa)->result_array();
 
-// $queryJasa = "SELECT jasa.*, users.*
-// FROM jasa JOIN users
-// ON jasa.id_seller = users.id
-// WHERE jasa.id = $id_jasa";
-// $jasa = $this->db->query($queryJasa)->result_array();
-
 $id_user = $user['id'];
 $queryUser = "SELECT * FROM users WHERE id = $id_user";
 $user = $this->db->query($queryUser)->result_array();
-
-// $qrUser = "SELECT pemesanan.*, jasa.nama, users.name
-// 	FROM pemesanan 
-// 	JOIN jasa ON pemesanan.id_jasa = jasa.id
-// 	JOIN users ON pemesanan.id_user = users.id
-// 	WHERE pemesanan.id_user = $id_user";
-// $quser = $this->db->query($qrUser)->result_array();
 ?>
 <div class="container">
 	<div class="row justify-content-md-center">
@@ -37,23 +24,9 @@ $user = $this->db->query($queryUser)->result_array();
 					<div class="card-body">
 						<h4 class="card-title font-weight-bold" style="color: #7E4A9E"><?= $jasa[0]['nama'] ?></h4>
 						<!--  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-						<p class="card-text"><small class="text-muted">By <?= $jasa[0]['nama_bisnis']; ?></small></p>
+						<p class="card-text pb-3"><small class="text-muted">By <?= $jasa[0]['nama_bisnis']; ?></small></p>
 						<i class="fas fa-map-marker-alt" style="color: red"></i>
 						<span style="font-size: 13px"> <?= $jasa[0]['lokasi'] ?></span>
-
-						<style type="text/css">
-							.checked {
-								color: orange;
-							}
-						</style>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-
-						<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(49)</div>
-						<button type="button" class="btn tmbl-ungu">Evoria Partner</button>
 
 					</div>
 				</div>
@@ -192,7 +165,7 @@ $user = $this->db->query($queryUser)->result_array();
 						</center>
 						<hr>
 					</div>
-					<button class="btn btn-outline-light btn-block" style="background-color: #7E4A9E" data-toggle="modal" data-target=".bd-example-modal-lg">Pesan</button>
+					<button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target=".bd-example-modal-lg">Pesan</button>
 				</div>
 			</div>
 		</div>
@@ -284,7 +257,7 @@ $user = $this->db->query($queryUser)->result_array();
 							});
 						</script>
 						<div class="container text-center">
-							<button class="btn btn-outline-light" id="tombol" style="background-color: #7E4A9E">
+							<button class="btn tmbl-ungu1" id="tombol">
 								Saya Sudah Bayar
 							</button>
 						</div>
@@ -331,7 +304,9 @@ $user = $this->db->query($queryUser)->result_array();
 										});
 									});
 								</script> -->
-								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Upload Bukti Bayar</button>
+								<div class="text-center">
+									<button class="btn tmbl-ungu1" type="submit">Upload Bukti Bayar</button>
+								</div>
 							</div>
 						</div>
 						</form>

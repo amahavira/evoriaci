@@ -19,23 +19,9 @@ $jasa = $this->db->query($queryJasa)->result_array();
 					<div class="card-body">
 						<h4 class="card-title font-weight-bold" style="color: #7E4A9E"><?= $tampilj->nama ?></h4>
 						<!--  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-						<p class="card-text"><small class="text-muted">By <?= $jasa[0]['nama_bisnis']; ?></small></p>
+						<p class="card-text pb-3"><small class="text-muted">By <?= $jasa[0]['nama_bisnis']; ?></small></p>
 						<i class="fas fa-map-marker-alt" style="color: red"></i>
 						<span style="font-size: 13px"> <?= $tampilj->lokasi ?></span>
-
-						<style type="text/css">
-							.checked {
-								color: orange;
-							}
-						</style>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-
-						<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(49)</div>
-						<button type="button" class="btn tmbl-ungu">Evoria Partner</button>
 
 					</div>
 				</div>
@@ -84,8 +70,8 @@ $jasa = $this->db->query($queryJasa)->result_array();
 					</table>
 					<hr>
 					<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Pesan</a> -->
-					<button class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Hubungi EO</button>
-					<button class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#pesan" style="background-color: #7E4A9E">Pesan Sekarang</button>
+					<button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target="#hub">Hubungi EO</button>
+					<button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target="#pesan">Pesan Sekarang</button>
 				</div>
 			</div>
 		</div>
@@ -113,7 +99,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 					</div>
 					<div class="modal-footer text-center">
 						<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a> -->
-						<button data-dismiss="modal" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</button>
+						<button data-dismiss="modal" class="btn tmbl-ungu1" style="margin:auto;">OK</button>
 					</div>
 				</div>
 			</div>
@@ -155,7 +141,9 @@ $jasa = $this->db->query($queryJasa)->result_array();
 									</tr>
 								</table>
 								<hr>
-								<button class="btn btn-outline-light btn-block" type="submit" style="background-color: #7E4A9E">Pesan Sekarang</button>
+								<div class="text-center">
+									<button class="btn tmbl-ungu1" type="submit" style="margin: auto;">Pesan Sekarang</button>
+								</div>
 							</div>
 						</div>
 						</form>

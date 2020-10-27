@@ -254,8 +254,8 @@
 						<div class="col-md-7 col-12 order-md-1 order-2">
 							<h4>Paket <br>
 								Pernikahan</h4>
-							<p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-								necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+							<p>Pilih Paket Pernikahan Sesuai Kebutuhanmu <br>
+								Dari Berbagai Event Organizer Terpercaya.</p>
 							<!-- <a href="#" style="background-color: white; color: #7E4A9E; border-radius: 30px"><b>BUY NOW</b></a> -->
 						</div>
 						<div class="col-md-5 col-12 order-md-2 order-1"><img src="<?php echo base_url('assets/gambar/event/1.jpg') ?>" class="mx-auto" style="margin: 10px; border-radius: 100%; height: 377px; width: auto; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" alt="slide"></div>
@@ -270,8 +270,8 @@
 						<div class="col-md-7 col-12 order-md-1 order-2">
 							<h4>Paket <br>
 								Ulang Tahun</h4>
-							<p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-								necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+							<p>Ingin Pesta Ulang Tahunmu Meriah? <br>
+								Evoria Siap Membantumu.</p>
 							<!-- <a href="#" style="background-color: white; color: #7E4A9E; border-radius: 30px"><b>BUY NOW</b></a> -->
 						</div>
 						<div class="col-md-5 col-12 order-md-2 order-1"><img src="<?php echo base_url('assets/gambar/event/birthday1.jpg') ?>" class="mx-auto" style="margin: 10px; border-radius: 100%; height: 377px; width: auto; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" alt="slide"></div>
@@ -286,8 +286,8 @@
 						<div class="col-md-7 col-12 order-md-1 order-2">
 							<h4>Event <br>
 								Musik</h4>
-							<p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-								necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+							<p>Biarkan Musik Yang Berbicara <br>
+								Biarkan Evoria Yang Mempersiapkan Eventnya.</p>
 							<!-- <a href="#" style="background-color: white; color: #7E4A9E; border-radius: 30px"><b>BUY NOW</b></a> -->
 						</div>
 						<div class="col-md-5 col-12 order-md-2 order-1"><img src="<?php echo base_url('assets/gambar/event/music1.jpg') ?>" class="mx-auto" style="margin: 10px; border-radius: 100%; height: 377px; width: auto; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" alt="slide"></div>

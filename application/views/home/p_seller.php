@@ -54,12 +54,11 @@
 </div>
 
 <!-- Button -->
-<div class="container text-center">
-	<!-- Standard button -->
+<!-- <div class="container text-center">
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Product</button>
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-th" aria-hidden="true"></i> Project</button>
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-question-circle-o" aria-hidden="true"></i> FaQ</button>
-</div>
+</div> -->
 <br>
 
 <?php
@@ -87,16 +86,9 @@ $jasa = $this->db->query($queryJasa)->result_array();
 							<p style="font-size: 12px; margin-bottom: 10px;">By <?= $tampil->nama_bisnis ?>
 							</p>
 							<h6 style="color: #7E4A9E; font-weight: bold; margin-bottom: 10px">Rp. <?= number_format($row['harga'], 0, ',', '.'); ?>
-								<!-- <del style="font-size: 12px">Rp. 55.000.000</del> -->
 							</h6>
 							<div class="col-md-12" style="padding-left: 0px">
-
-								<span class="fa fa-star checked"></span>
-								<span class="checked" style="font-size: 12px; font-weight: bold;">5/5</span>
-
-								<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(419)
-								</div>
-								<button type="button" style="font-size: 10px" class="btn tmbl-ungu">Evoria Partner</button>
+								<a href="<?= base_url(); ?>user/detail/<?= $row['id'] ?>" style="font-size: 10px" class="btn tmbl-ungu">Detail</a>
 							</div>
 						</div>
 					</div>
