@@ -23,7 +23,7 @@
 
 							<span class="fa fa-star checked"></span>
 							<div class="d-inline checked" style="font-size: 12px; font-weight: bold;"><?= $ratings  ?>/5</div>
-							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?>)</div>
+							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?> Penilaian)</div>
 							<span class="btn tmbl-ungu">Evoria Partner</span>
 							<a class="btn tmbl-ungu1" href="<?= base_url('user/data_bisnis'); ?>">Edit Profile Bisnis</a>
 						</div>
@@ -48,12 +48,11 @@
 </div>
 
 <!-- Button -->
-<div class="container text-center">
-	<!-- Standard button -->
+<!-- <div class="container text-center">
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Product</button>
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-th" aria-hidden="true"></i> Project</button>
 	<button type="button" class="btn tmbl-ungu"><i class="fa fa-question-circle-o" aria-hidden="true"></i> FaQ</button>
-</div>
+</div> -->
 <br>
 
 <!-- Query Jasa -->
@@ -127,7 +126,11 @@ $inspirasi = $this->db->query($queryInspirasi)->result_array();
 		<br>
 	</div>
 </div>
-<br>
+<div class="container">
+	<br>
+	<hr>
+	<br>
+</div>
 <div class="container" style="padding-top:30px; border-radius: 10px; background-image: url(<?php echo base_url('assets/gambar/bg/fs.png') ?>)">
 	<div class="container">
 		<h4 style="color: #7E4A9E">Inspirasi</h4>

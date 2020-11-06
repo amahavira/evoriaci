@@ -57,21 +57,21 @@ class Auth extends CI_Controller
 				} else {
 					$this->session->set_flashdata('message', '
                     <div class="alert alert-danger" role="alert">
-                        Wrong password!
+                        Password Salah!
                     </div>');
 					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '
                 <div class="alert alert-danger" role="alert">
-                    This email has not been activated!
+                    Email Belum Diaktivasi!
                 </div>');
 				redirect('auth');
 			}
 		} else {
 			$this->session->set_flashdata('message', '
             <div class="alert alert-danger" role="alert">
-                The Email is not registered!
+                Email Belum Terdaftar!
             </div>');
 			redirect('auth');
 		}
@@ -105,17 +105,17 @@ class Auth extends CI_Controller
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
-			'is_unique' => 'The Email has already registered!'
+			'is_unique' => 'Email Telah Terdaftar!'
 		]);
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 		$this->form_validation->set_rules('nohp', 'Number Phone', 'required|trim|integer|min_length[5]', [
-			'integer' => 'The Number Phone must be number!',
-			'min_length' => 'The Number Phone too short!'
+			'integer' => 'Nomor Telepon Harus Angka!',
+			'min_length' => 'Nomor Telepon Terlalu Pendek!'
 		]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
-			'matches' => 'The Password dont match!',
-			'min_length' => 'Password too short!'
+			'matches' => 'Password Tidak Cocok!',
+			'min_length' => 'Password Minimal 6 Karakter!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
@@ -154,7 +154,7 @@ class Auth extends CI_Controller
 
 			$this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
-                Congratulation! your account has been created. Please activate your account!
+                Selamat! Akun Anda Telah Dibuat. Silahkan Cek Email Untuk Aktivasi Email Anda!
             </div>');
 			redirect('auth');
 		}
@@ -169,15 +169,15 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
-			'is_unique' => 'The Email has already registered!'
+			'is_unique' => 'Email Telah Terdaftar!'
 		]);
 		$this->form_validation->set_rules('nohp', 'Number Phone', 'required|trim|integer|min_length[5]', [
-			'integer' => 'The Number Phone must be number!',
-			'min_length' => 'The Number Phone too short!'
+			'integer' => 'Nomor Telepon Harus Angka!',
+			'min_length' => 'Nomor Telepon Terlalu Pendek!'
 		]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
-			'matches' => 'The Password dont match!',
-			'min_length' => 'The Password min 6 characters!'
+			'matches' => 'Password Tidak Cocok!',
+			'min_length' => 'Password Minimal 6 Karakter!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('nama_bisnis', 'Nama Bisnis', 'required|trim');
@@ -241,7 +241,7 @@ class Auth extends CI_Controller
 
 				$this->session->set_flashdata('message', '
 					<div class="alert alert-success" role="alert">
-					Congratulation! your account has been created. Please activate your account
+					Selamat! Akun Anda Telah Dibuat. Silahkan Cek Email Untuk Aktivasi Email Anda!
 					</div>');
 				redirect('auth/login_eo');
 			}
@@ -268,10 +268,10 @@ class Auth extends CI_Controller
 
 		if ($type == 'verify') {
 			$this->email->subject('Account Verification');
-			$this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+			$this->email->message('Klik link berikut untuk verifikasi akun Anda : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
 		} else if ($type == 'forgot') {
 			$this->email->subject('Reset Password');
-			$this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+			$this->email->message('Klik link berikut untuk reset password Anda : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
 		}
 
 
@@ -301,7 +301,7 @@ class Auth extends CI_Controller
 					$this->db->delete('user_token', ['email' => $email]);
 					$this->session->set_flashdata('message', '
                     <div class="alert alert-success" role="alert">
-                        ' . $email . ' has been activated! Please login.
+                        ' . $email . ' Telah Diaktifkan! Silahkan Login.
                     </div>');
 					redirect('auth');
 				} else {
@@ -310,21 +310,21 @@ class Auth extends CI_Controller
 
 					$this->session->set_flashdata('message', '
                     <div class="alert alert-danger" role="alert">
-                        Account activation failed! Token expired.
+                        Aktivasi Email Gagal! Token Telah Kedaluwarsa.
                     </div>');
 					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '
                 <div class="alert alert-danger" role="alert">
-                    Account activation failed! Token invalid.
+                    Aktivasi Email Gagal! Token Tidak Valid.
                 </div>');
 				redirect('auth');
 			}
 		} else {
 			$this->session->set_flashdata('message', '
             <div class="alert alert-danger" role="alert">
-                Account activation failed! Wrong email.
+                Aktivasi Akun Gagal! Email Salah.
             </div>');
 			redirect('auth');
 		}
@@ -337,7 +337,7 @@ class Auth extends CI_Controller
 
 		$this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
-                You have been logged out!
+                Anda Telah Logout!
             </div>');
 		redirect('auth');
 	}
@@ -370,13 +370,13 @@ class Auth extends CI_Controller
 				$this->_sendEmail($token, 'forgot');
 				$this->session->set_flashdata('message', '
                 <div class="alert alert-success" role="alert">
-                    Please check your email to reset your password!
+                    Mohon Cek Email Anda Untuk Reset Password!
                 </div>');
 				redirect('auth/forgotpassword');
 			} else {
 				$this->session->set_flashdata('message', '
                 <div class="alert alert-danger" role="alert">
-                    Email is not registered or activated!
+                    Email Belum Terdaftar Atau Diaktivasi!
                 </div>');
 				redirect('auth/forgotpassword');
 			}
@@ -402,21 +402,21 @@ class Auth extends CI_Controller
 
 					$this->session->set_flashdata('message', '
                     <div class="alert alert-danger" role="alert">
-                        Account activation failed! Token expired.
+                        Aktivasi Akun Gagal! Token Telah Kedaluwarsa.
                     </div>');
 					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '
                 <div class="alert alert-danger" role="alert">
-                    Reset password failed! Wrong token.
+                    Reset Password Gagal! Token Salah.
                 </div>');
 				redirect('auth');
 			}
 		} else {
 			$this->session->set_flashdata('message', '
             <div class="alert alert-danger" role="alert">
-                Reset password failed! Wrong email.
+                Reset Password Gagal! Email Salah.
             </div>');
 			redirect('auth');
 		}
@@ -449,7 +449,7 @@ class Auth extends CI_Controller
 
 			$this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
-                Password has been changed! Please login.
+                Password Berhasil Diubah! Silahkan Login.
             </div>');
 			redirect('auth');
 		}

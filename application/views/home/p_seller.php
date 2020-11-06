@@ -29,7 +29,7 @@
 							</style>
 							<span class="fa fa-star checked"></span>
 							<div class="d-inline checked" style="font-size: 12px; font-weight: bold;"><?= $ratings  ?>/5</div>
-							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?>)</div>
+							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?> Penilaian)</div>
 							<button type="button" class="btn tmbl-ungu">Evoria Partner</button>
 						</div>
 						<div class="col-md-12">

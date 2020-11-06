@@ -13,6 +13,11 @@ class HapusModel extends CI_Model
 		return $this->db->delete('kategori_jasa', ['id' => $id]);
 	}
 
+	public function hapusUser($id)
+	{
+		return $this->db->delete('users', ['id' => $id]);
+	}
+
 	public function hapusMenu($id)
 	{
 		return $this->db->delete('user_menu', ['id' => $id]);

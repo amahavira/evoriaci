@@ -139,7 +139,6 @@
 								<i class="fas fa-fw fa-key fa-sm mr-2 text-gray-400"></i>
 								Change Password
 							</a>
-
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
 								<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -147,7 +146,6 @@
 							</a>
 						</div>
 					</li>
-
 				</ul>
 			</div>
 
@@ -197,8 +195,10 @@
 											<span><?= $row['title'] ?></span></a>
 										</li>
 									<?php endforeach; ?>
-
 								<?php endforeach; ?>
+								<li class="nav-item">
+									<a href="#" class="nav-link pb-0" data-toggle="modal" data-target="#help" style="width: 100px; color: #7E4A9E;">Bantuan</a>
+								</li>
 						</ul>
 					</div>
 				</nav>
@@ -207,4 +207,31 @@
 		<!-- </div> -->
 		<!-- </div> -->
 		<hr>
+	</div>
+
+	<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content" style="border-radius: 10px">
+				<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
+					<h4>Butuh Bantuan? Silahkan Hubungi Kami</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<h5 style="text-align: center;">Silahkan Hubungi Email Kami :</h5>
+					</div>
+
+					<div class="form-group">
+						<h4 style="text-align: center;">evoriaaxelindonesia@gmail.com</h4>
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button data-dismiss="modal" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</button>
+				</div>
+			</div>
+		</div>
 	</div>

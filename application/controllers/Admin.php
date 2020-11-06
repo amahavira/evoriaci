@@ -24,6 +24,20 @@ class Admin extends CI_Controller
 		$this->load->view('templates/profile_footer');
 	}
 
+	public function usermanagement()
+	{
+		$data['judul'] = 'User Management';
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['pengguna'] = $this->db->get('users')->result_array();
+
+		$this->load->view('templates/profile_header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/user', $data);
+		$this->load->view('templates/profile_footer');
+	}
+
 	public function role()
 	{
 		$data['judul'] = 'Role';
@@ -46,7 +60,7 @@ class Admin extends CI_Controller
 			$this->db->insert('user_role', $data);
 			$this->session->set_flashdata('message', '
                     <div class="alert alert-success" role="alert">
-                        New Role added!
+                        Role Baru Telah Ditambahkan!
                     </div>');
 			redirect('admin/role');
 		}
@@ -74,7 +88,7 @@ class Admin extends CI_Controller
 			$this->db->insert('kategori_jasa', $data);
 			$this->session->set_flashdata('message', '
                     <div class="alert alert-success" role="alert">
-                        New Category added!
+                        Kategori Baru Telah Ditambahkan!
                     </div>');
 			redirect('admin/kategori');
 		}
@@ -117,7 +131,7 @@ class Admin extends CI_Controller
 
 		$this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
-                Access Changed!
+                Akses Telah Dirubah!
             </div>');
 	}
 
@@ -186,12 +200,29 @@ class Admin extends CI_Controller
 	public function hapusRole($id)
 	{
 		$this->HapusModel->hapusRole($id);
+		$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Role Berhasil Dihapus
+            </div>');
 		redirect('admin/role');
 	}
 
 	public function hapusKategori($id)
 	{
 		$this->HapusModel->hapusKategori($id);
+		$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                kategori Berhasil Dihapus
+            </div>');
 		redirect('admin/kategori');
+	}
+	public function hapusUser($id)
+	{
+		$this->HapusModel->hapusUser($id);
+		$this->session->set_flashdata('message', '
+            <div class="alert alert-success" role="alert">
+                Pengguna Berhasil Dihapus
+            </div>');
+		redirect('admin/usermanagement');
 	}
 }

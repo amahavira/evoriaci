@@ -26,7 +26,7 @@
 										<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<div class="text-left">
-										<a class="small" href="<?= base_url('auth/forgotpassword'); ?>" style="color: #7E4A9E;">Forgot Password?</a>
+										<a class="small" href="<?= base_url('auth/forgotpassword'); ?>" style="color: #7E4A9E;">Lupa Password?</a>
 									</div>
 									<br>
 									<button type="submit" class="btn tmbl1-ungu1">

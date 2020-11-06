@@ -60,7 +60,7 @@
 					<div class="col-9"></div>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item btn-group">
-							<a href="#" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#help" style="width: 100px; background-color: #7E4A9E;">Help</a>
+							<a href="#" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#help" style="width: 100px; background-color: #7E4A9E;">Bantuan</a>
 						</li>
 					</ul>
 				</div>
