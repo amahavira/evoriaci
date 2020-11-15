@@ -17,7 +17,7 @@
 								<?= $this->session->flashdata('message'); ?>
 								<form class="user" method="POST" action="<?= base_url('auth/forgotpassword'); ?>">
 									<div class="form-group">
-										<input value="<?= set_value('email'); ?>" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan Alamt Email...">
+										<input value="<?= set_value('email'); ?>" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan Alamat Email...">
 										<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<button type="submit" class="btn tmbl1-ungu1 btn-block">

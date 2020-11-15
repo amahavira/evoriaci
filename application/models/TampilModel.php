@@ -11,6 +11,16 @@ class TampilModel extends CI_Model
 		WHERE nama LIKE '%$keyword%'";
 		return $this->db->query($queryJasa)->result_array();
 	}
+
+	public function getFilter($keyword, $min, $max)
+	{
+		$queryJasa = "SELECT jasa.*, users.nama_bisnis
+		FROM jasa JOIN users
+		ON jasa.id_seller = users.id
+		WHERE id_kategori = $keyword
+		AND harga BETWEEN $min AND $max";
+		return $this->db->query($queryJasa)->result_array();
+	}
 	public function getTampilVendor($id = NULL)
 	{
 		$query = $this->db->get_where('users', array('id' => $id))->row();

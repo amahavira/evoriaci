@@ -25,7 +25,7 @@
 							<div class="d-inline checked" style="font-size: 12px; font-weight: bold;"><?= $ratings  ?>/5</div>
 							<div class="d-inline p-1" style="color: #7E4A9E; font-size: 12px">(<?= $pembagi  ?> Penilaian)</div>
 							<span class="btn tmbl-ungu">Evoria Partner</span>
-							<a class="btn tmbl-ungu1" href="<?= base_url('user/data_bisnis'); ?>">Edit Profile Bisnis</a>
+							<a class="btn tmbl-ungu1" href="<?= base_url('seller/data_bisnis'); ?>">Edit Profile Bisnis</a>
 						</div>
 						<div class="col-md-12">
 							<span class="badge badge-info" style="border-radius: 40px; background-color: #7E4A9E; margin-bottom: 10px;">Wedding</span>
@@ -96,20 +96,9 @@ $inspirasi = $this->db->query($queryInspirasi)->result_array();
 								<!-- <del style="font-size: 12px">Rp. 55.000.000</del> -->
 							</h6>
 							<div class="col-md-12" style="padding-left: 0px">
-								<style type="text/css">
-									.checked {
-										color: orange;
-									}
-								</style>
-								<span class="fa fa-star checked"></span>
-								<span class="checked" style="font-size: 12px; font-weight: bold;">5/5</span>
-
-								<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(419)
-								</div>
-								<button type="button" style="font-size: 10px" class="btn tmbl-ungu">Evoria Partner</button>
 								<div class="row p-l-10 p-t-5">
-									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>user/tampil_edit_jasa/<?= $row['id'] ?>">Edit</a>
-									<a class="btn tmbl-merah" href="<?= base_url(); ?>user/hapusJasa/<?= $row['id'] ?>">Hapus</a>
+									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>seller/tampil_edit_jasa/<?= $row['id'] ?>">Edit</a>
+									<a class="btn tmbl-merah" href="<?= base_url(); ?>seller/hapusJasa/<?= $row['id'] ?>">Hapus</a>
 								</div>
 							</div>
 						</div>
@@ -157,8 +146,8 @@ $inspirasi = $this->db->query($queryInspirasi)->result_array();
 								<p class="card-text">Social Media :</p>
 								<p class="card-text"><?= $row['medsos'] ?></p>
 								<div class="row p-l-10 p-t-5">
-									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>user/tampil_edit_inspirasi/<?= $row['id'] ?>">Edit</a>
-									<a class="btn tmbl-merah" href="<?= base_url(); ?>user/hapusInspirasi/<?= $row['id'] ?>">Hapus</a>
+									<a class="btn tmbl-ungu1" style="margin-right: 10px;" href="<?= base_url(); ?>seller/tampil_edit_inspirasi/<?= $row['id'] ?>">Edit</a>
+									<a class="btn tmbl-merah" href="<?= base_url(); ?>seller/hapusInspirasi/<?= $row['id'] ?>">Hapus</a>
 								</div>
 							</div>
 						</div>

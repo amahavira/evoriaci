@@ -18,7 +18,7 @@
 			<br>
 			<div class="row">
 				<div class="col-lg-12" style="text-align: center;">
-					<a class="btn tmbl-ungu1" href="<?= base_url('user/tambah_inspiration'); ?>">Unggah Inspirasi</a>
+					<a class="btn tmbl-ungu1" href="<?= base_url('seller/tambah_inspiration'); ?>">Unggah Inspirasi</a>
 				</div>
 			</div>
 		</div>

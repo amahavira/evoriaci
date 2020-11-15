@@ -192,7 +192,8 @@
 										<li class="nav-item">
 										<?php endif; ?>
 										<a class="nav-link pb-0" style="color: #7E4A9E;" href="<?= base_url($row['url']); ?>">
-											<span><?= $row['title'] ?></span></a>
+											<span><?= $row['title'] ?></span>
+										</a>
 										</li>
 									<?php endforeach; ?>
 								<?php endforeach; ?>

@@ -81,31 +81,31 @@
 								</td>
 								<td>
 									<?php if ($row['status'] == 0) : ?>
-										<?= form_open_multipart('user/konfirmasi'); ?>
+										<?= form_open_multipart('seller/konfirmasi'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="1">
 										<button type="submit" class="badge badge-primary" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 2) : ?>
-										<?= form_open_multipart('user/konfirmasi_bayar'); ?>
+										<?= form_open_multipart('seller/konfirmasi_bayar'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="3">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 3) : ?>
-										<?= form_open_multipart('user/konfirmasi_selesai_seller'); ?>
+										<?= form_open_multipart('seller/konfirmasi_selesai_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="4">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
@@ -184,31 +184,31 @@
 								</td>
 								<td>
 									<?php if ($row['status'] == 0) : ?>
-										<?= form_open_multipart('user/konfirmasi'); ?>
+										<?= form_open_multipart('seller/konfirmasi'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="1">
 										<button type="submit" class="badge badge-primary" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 2) : ?>
-										<?= form_open_multipart('user/konfirmasi_bayar'); ?>
+										<?= form_open_multipart('seller/konfirmasi_bayar'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="3">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 3) : ?>
-										<?= form_open_multipart('user/konfirmasi_selesai_seller'); ?>
+										<?= form_open_multipart('seller/konfirmasi_selesai_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="4">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
@@ -287,31 +287,31 @@
 								</td>
 								<td>
 									<?php if ($row['status'] == 0) : ?>
-										<?= form_open_multipart('user/konfirmasi'); ?>
+										<?= form_open_multipart('seller/konfirmasi'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="1">
 										<button type="submit" class="badge badge-primary" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 2) : ?>
-										<?= form_open_multipart('user/konfirmasi_bayar'); ?>
+										<?= form_open_multipart('seller/konfirmasi_bayar'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="3">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 3) : ?>
-										<?= form_open_multipart('user/konfirmasi_selesai_seller'); ?>
+										<?= form_open_multipart('seller/konfirmasi_selesai_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="4">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
@@ -390,31 +390,31 @@
 								</td>
 								<td>
 									<?php if ($row['status'] == 0) : ?>
-										<?= form_open_multipart('user/konfirmasi'); ?>
+										<?= form_open_multipart('seller/konfirmasi'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="1">
 										<button type="submit" class="badge badge-primary" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 2) : ?>
-										<?= form_open_multipart('user/konfirmasi_bayar'); ?>
+										<?= form_open_multipart('seller/konfirmasi_bayar'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="3">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 3) : ?>
-										<?= form_open_multipart('user/konfirmasi_selesai_seller'); ?>
+										<?= form_open_multipart('seller/konfirmasi_selesai_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="4">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>
@@ -493,31 +493,31 @@
 								</td>
 								<td>
 									<?php if ($row['status'] == 0) : ?>
-										<?= form_open_multipart('user/konfirmasi'); ?>
+										<?= form_open_multipart('seller/konfirmasi'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="1">
 										<button type="submit" class="badge badge-primary" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 2) : ?>
-										<?= form_open_multipart('user/konfirmasi_bayar'); ?>
+										<?= form_open_multipart('seller/konfirmasi_bayar'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="3">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Konfirmasi</button>
 										</form>
-										<?= form_open_multipart('user/batal_seller'); ?>
+										<?= form_open_multipart('seller/batal_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="6">
 										<button type="submit" class="badge badge-danger" style="margin-left: 5px;">Batalkan</button>
 										</form>
 									<?php endif; ?>
 									<?php if ($row['status'] == 3) : ?>
-										<?= form_open_multipart('user/konfirmasi_selesai_seller'); ?>
+										<?= form_open_multipart('seller/konfirmasi_selesai_seller'); ?>
 										<input type="hidden" class="form-control" name="id" id="id" value="<?= $row['id']; ?>">
 										<input type="hidden" class="form-control" name="status" id="status" value="4">
 										<button type="submit" class="badge badge-success" style="margin-right: 5px;">Selesai</button>

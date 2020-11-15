@@ -5,7 +5,7 @@
 				<div class="container-fluid">
 					<h3 class="text-dark mb-4">Tambah Jasa</h3>
 					<?= $this->session->flashdata('message'); ?>
-					<form class="user" method="POST" action="<?= base_url('user/tambah_jasa'); ?>" enctype="multipart/form-data">
+					<form method="POST" action="<?= base_url('seller/tambah_jasa'); ?>" enctype="multipart/form-data">
 						<div class="row mb-3">
 							<div class="col-lg-4">
 								<div class="card mb-3">

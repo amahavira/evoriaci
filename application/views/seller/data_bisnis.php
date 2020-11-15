@@ -1,7 +1,7 @@
 <div class="container" style="padding-left:7px;padding-right:7px">
 	<h3 class="text-dark mb-4">Profile Bisnis EO/Seller</h3>
 	<?= $this->session->flashdata('message'); ?>
-	<?= form_open_multipart('user/data_bisnis'); ?>
+	<?= form_open_multipart('seller/data_bisnis'); ?>
 	<div class="row mb-3">
 		<div class="col-lg-4">
 			<div class="card mb-3">

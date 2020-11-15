@@ -26,7 +26,7 @@
 										<?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<button type="submit" class="btn tmbl1-ungu1 btn-user btn-block">
-										Change Password
+										Ubah Password
 									</button>
 
 								</form>

@@ -139,7 +139,7 @@ $user = $this->db->query($queryUser)->result_array();
 					<table class="table">
 						<tr>
 							<td><?= $jasa[0]['nama'] ?></td>
-							<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
+							<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['subtotal'], 0, ',', '.'); ?>,-</b></span></td>
 						</tr>
 					</table>
 					<hr>
@@ -177,12 +177,12 @@ $user = $this->db->query($queryUser)->result_array();
 					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
 						<td><?= $jasa[0]['nama'] ?> </td>
 						<td><span class="text-right">
-								<h4>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</h4>
+								<h4>Rp <?= number_format($jasa[0]['subtotal'], 0, ',', '.'); ?>,-</h4>
 							</span></td>
 					</div>
 					<div class="modal-body">
 						<img src="<?php echo base_url('assets/gambar/pay/bca.png') ?>" width="100px" height="auto">
-						<p>No. Virtual Account:</p>
+						<p>No. Rekening:</p>
 						<table class="table">
 							<tr>
 								<td>
@@ -192,14 +192,15 @@ $user = $this->db->query($queryUser)->result_array();
 							</tr>
 						</table>
 						<p style="font-size: 14px">
-							<span class="text-primary" style="font-size: 12px">Dicek otomatis dalam 10 menit</span> <br>
-							Bayar pesanan ke Virtual Account di atas sebelum membuat pesanan kembali dengan Virtual Account agar nomor tetap sama. Hanya menerima transfer dari Bank BCA.</p>
+							<span class="text-primary" style="font-size: 12px">Dicek dalam 10 menit</span>
+						</p>
+						<br>
 						<div class="accordion" id="accordionExample">
 							<div class="card">
 								<div class="card-header" id="headingOne" style="padding:0px">
 									<h2 class="mb-0">
 										<button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-											<b>Petunjuk Transfer melalui ATM</b>
+											<b>Petunjuk Transfer melalui Mesin ATM</b>
 										</button>
 									</h2>
 								</div>
@@ -207,11 +208,15 @@ $user = $this->db->query($queryUser)->result_array();
 								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 									<div class="card-body">
 										<p style="font-size: 14px">
-											1. Lorem ipsum dolor > sit amet > consectetur <br>
-											2. adipisicing elit, sed do eiusmod tempor <br>
-											3. Tempor incididunt ut labore et dolore magna <br>
-											4. Aliqua. Ut enim ad minim veniam,quis nostrud <br>
-											5. Ullamco laboris nisi ut aliquip ex ea commodo <br>
+											1. Masukkan kartu ATM ke tempat yang tersedia. <br>
+											2. Selanjutnya, pilih bahasa yang ingin Anda gunakan. Untuk mempermudah prosesnya, Anda bisa memilih bahasa Indonesia. Tunggu sesaat hingga muncul tampilan menu baru. Setelah muncul, klik pilihan LANJUTKAN yang ada pada bagian pojok bawah layar. <br>
+											3. Masukkan PIN ATM <br>
+											4. Pilih Transaksi lainnya <br>
+											5. Pilih transfer <br>
+											6. Masukkan kode bank dan nomor rekening tujuan <br>
+											7. Masukkan jumlah nominal uang <br>
+											8. Masukkan nomor referensi. Jika tidak ada nomor referensi tertentu, Anda bisa lewati langkah ini. <br>
+											9. Terakhir jangan lupa ambil Kartu ATM Anda <br>
 										</p>
 									</div>
 								</div>
@@ -220,27 +225,20 @@ $user = $this->db->query($queryUser)->result_array();
 								<div class="card-header" id="headingTwo" style="padding:0px">
 									<h2 class="mb-0">
 										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-											<b>Petunjuk Transfer melalui BCA Mobile</b>
+											<b>Petunjuk Transfer melalui Mobile Banking</b>
 										</button>
 									</h2>
 								</div>
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 									<div class="card-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="headingThree" style="padding:0px">
-									<h2 class="mb-0">
-										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-											<b>Petunjuk Transfer melalui KlikBCA</b>
-										</button>
-									</h2>
-								</div>
-								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-									<div class="card-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										<p style="font-size: 14px">
+											1. Buka aplikasi dan login. <br>
+											2. Untuk mengirim uang, tap menu Transfer. <br>
+											3. Pada halaman baru, masukkan nomor rekening bank yang dituju. <br>
+											4. Masukkan jumlah transfer yang akan dikirim. <br>
+											5. Klik OK. Lalu, masukkan PIN Mobile Banking Anda / Password transaksi. Klik OK. <br>
+											6. Unduh Bukti Transfer <br>
+										</p>
 									</div>
 								</div>
 							</div>
@@ -281,7 +279,7 @@ $user = $this->db->query($queryUser)->result_array();
 								<table class="table">
 									<tr>
 										<td><?= $jasa[0]['nama'] ?></td>
-										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
+										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['subtotal'], 0, ',', '.'); ?>,-</b></span></td>
 									</tr>
 								</table>
 								<hr>

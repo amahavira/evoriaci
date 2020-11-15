@@ -67,44 +67,32 @@ $jasa = $this->db->query($queryJasa)->result_array();
 							<td><?= $tampilj->nama ?></td>
 							<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
 						</tr>
+						<tr>
+							<td>Biaya Layanan (0,05%)</td>
+							<?php
+							$biaya = ($jasa[0]['harga'] * 0.0005);
+							?>
+							<td><span class="text-right"><b>Rp <?= number_format($biaya, 0, ',', '.'); ?>,-</b></span></td>
+						</tr>
+						<tr>
+							<td>
+								<b>
+									Total Bayar
+								</b>
+							</td>
+							<?php
+							$total = $biaya + $jasa[0]['harga'];
+							?>
+							<td><span class="text-right text-success"><b>Rp <?= number_format($total, 0, ',', '.'); ?>,-</b></span></td>
+						</tr>
 					</table>
 					<hr>
 					<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#hub" style="background-color: #7E4A9E">Pesan</a> -->
-					<button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target="#hub">Hubungi EO</button>
+					<!-- <button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target="#hub">Hubungi EO</button> -->
 					<button class="btn tmbl-ungu1 btn-block" data-toggle="modal" data-target="#pesan">Pesan Sekarang</button>
 				</div>
 			</div>
 		</div>
-
-		<!-- Modal Add Product-->
-		<div class="modal fade" id="hub" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content" style="border-radius: 10px">
-					<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
-						<h4>Diskusikan Dengan EO</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group">
-							<h4 style="text-align: center;">Silahkan Hubungi Nomor EO :</h4>
-						</div>
-
-						<div class="form-group">
-							<h1 style="text-align: center;"><?= $jasa[0]['nohp']; ?></h1>
-						</div>
-
-					</div>
-					<div class="modal-footer text-center">
-						<!-- <a href="<?= base_url(); ?>user/payment/<?= $jasa[0]['id'] ?>" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</a> -->
-						<button data-dismiss="modal" class="btn tmbl-ungu1" style="margin:auto;">OK</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Modal Add Product-->
 
 		<!-- Modal Add Product-->
 		<div class="modal fade" id="pesan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,6 +119,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 									<input type="hidden" class="form-control" name="id_user" id="id_user" value="<?= $user['id']; ?>">
 									<input type="date" class="form-control datepicker" name="tgl_acara" id="tgl_acara" required>
 									<input type="hidden" class="form-control datepicker" name="tgl_order" id="tgl_order" value="<?= date('Y-m-d'); ?>">
+									<input type="hidden" class="form-control" name="subtotal" id="subtotal" value="<?= $total ?>">
 								</div>
 								<hr>
 								<label><b>Rincian Biaya</b></label>
@@ -139,7 +128,23 @@ $jasa = $this->db->query($queryJasa)->result_array();
 										<td><?= $tampilj->nama ?></td>
 										<td><span class="text-right"><b>Rp <?= number_format($jasa[0]['harga'], 0, ',', '.'); ?>,-</b></span></td>
 									</tr>
+									<tr>
+										<td>Biaya Layanan (0,05%)</td>
+										<td><span class="text-right"><b>Rp <?= number_format($biaya, 0, ',', '.'); ?>,-</b></span></td>
+									</tr>
+									<tr>
+										<td>
+											<b>
+												Total Bayar
+											</b>
+										</td>
+										<td><span class="text-right text-success"><b>Rp <?= number_format($total, 0, ',', '.'); ?>,-</b></span></td>
+									</tr>
 								</table>
+								<i class="fas fa-info-circle"></i> Biaya Layanan Evoria<br>
+								<p style="text-align: justify; font-size: 13px">
+									Setiap pemesanan akan dikenai biaya layanan sebesar 1,15% dari harga
+								</p>
 								<hr>
 								<div class="text-center">
 									<button class="btn tmbl-ungu1" type="submit" style="margin: auto;">Pesan Sekarang</button>

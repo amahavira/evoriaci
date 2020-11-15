@@ -13,7 +13,7 @@
 	<link href="<?php echo base_url('assets/css/modern-business.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/navbar-style1.css') ?>" rel="stylesheet">
 	<link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
 	<link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
@@ -62,71 +62,173 @@
 			background: rgba(108, 88, 179, 0.75);
 			border: 2px solid rgba(108, 89, 179, 0.75);
 		}
+
+		.tmbl-merah {
+			font-family: Raleway-SemiBold;
+			font-size: 13px;
+			color: white;
+			letter-spacing: 1px;
+			line-height: 15px;
+			border: 2px solid rgba(217, 83, 79, 0.75);
+			border-radius: 40px;
+			background-color: #d9534f;
+			transition: all 0.3s ease 0s;
+		}
+
+		.tmbl-merah:hover {
+			color: #FFF;
+			background: rgba(217, 82, 79, 0.75);
+			border: 2px solid rgba(217, 83, 79, 0.75);
+		}
 	</style>
 
-	<script src="https://kit.fontawesome.com/be4d5ec7e7.js" crossorigin="anonymous"></script>
+	<!-- timer -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/comingsoon_06/vendor/animate/canimate.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/comingsoon_06/vendor/select2/select2.min.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/comingsoon_06/vendor/countdowntime/flipclock.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/comingsoon_06/css/cutil.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/comingsoon_06/css/cmain.css') ?>">
 
+	<script src="https://kit.fontawesome.com/be4d5ec7e7.js" crossorigin="anonymous"></script>
 </head>
 
 <body id="page-top">
 	<div class="container" style="padding-left:7px;padding-right:7px">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-dark  fixed-top" style="background-color: white;">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-white topbar">
 			<div class="container">
-				<a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url('assets/gambar/logo/evoria.png') ?>" width="100px" height="auto"></a>
+				<a class="navbar-brand" href="<?php echo base_url() ?>seller/halaman_bisnis"><img src="<?php echo base_url('assets/gambar/logo/evoria.png') ?>" width="100px" height="auto"></a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<div class="col-9">
-						<!-- <div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div> -->
+					<div class="input-group">
+						<div class="col-md-10">
+						</div>
 					</div>
-
-					<ul class="navbar-nav ml-auto">
-
-						<li class="nav-item btn-group">
-							<a href="<?= base_url('auth'); ?>" class="btn btn-outline-light btn-sm" style="width: 100px; background-color: #7E4A9E;">Masuk</a>
-						</li>
-
-						<li class="nav-item btn-group">
-							<a href="<?= base_url('auth/login_eo'); ?>" class="btn btn-outline-light btn-sm" style="width: 100px; background-color: #7E4A9E;">Daftar EO</a>
-						</li>
-
-					</ul>
 				</div>
+
+				<!-- Topbar Navbar -->
+				<ul class="navbar-nav ml-auto">
+
+					<div class="topbar-divider d-none d-sm-block"></div>
+
+					<!-- Nav Item - User Information -->
+					<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small">
+								<?= $user['name']; ?>
+							</span>
+							<img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>">
+						</a>
+						<!-- Dropdown - User Information -->
+						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+							<a class="dropdown-item" href="<?php echo base_url() ?>seller/user">
+								<i class="fas fa-fw fa-user fa-sm mr-2 text-gray-400"></i>
+								My Profile
+							</a>
+							<a class="dropdown-item" href="<?php echo base_url() ?>seller/edit">
+								<i class="fas fa-fw fa-user-edit fa-sm mr-2 text-gray-400"></i>
+								Edit Profile
+							</a>
+							<a class="dropdown-item" href="<?php echo base_url() ?>seller/changepassword">
+								<i class="fas fa-fw fa-key fa-sm mr-2 text-gray-400"></i>
+								Change Password
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
+								<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+								Logout
+							</a>
+						</div>
+					</li>
+				</ul>
 			</div>
+
 		</nav>
+		<!-- End of Topbar -->
+
+
 		<div class="row align-items-center">
 			<div class="col-lg-12">
 				<nav class="navbar navbar-expand-lg navbar-light">
-
 					<div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
 						<ul class="navbar-nav">
-							<li class="nav-item active">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/halaman_bisnis">Dashboard</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/profile">Profile</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/edit_profile">Edit
-									Profile</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/table">Table</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/login">Login</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" style="color: #7E4A9E;" href="<?php echo base_url() ?>seller/register">Register</a>
-							</li>
+							<?php
+							$role_id = $this->session->userdata('role_id');
+							$queryMenu = "SELECT `user_menu`.`id`, `menu`
+									FROM `user_menu` JOIN `user_access_menu`
+									ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+									WHERE `user_access_menu`.`role_id` = $role_id
+									ORDER BY `user_access_menu`.`menu_id` ASC
+									";
+
+							$menu = $this->db->query($queryMenu)->result_array();
+							?>
+
+							<!-- Looping Menu -->
+							<?php foreach ($menu as $row) : ?>
+
+								<!-- Siapkan sub-menu sesuai Menu -->
+								<?php
+								$menu_id = $row['id'];
+								$querySubMenu = "SELECT * FROM `user_sub_menu` 
+										WHERE `menu_id` = $menu_id
+										AND `is_active` = 1
+										";
+
+								$subMenu = $this->db->query($querySubMenu)->result_array();
+								?>
+
+								<?php foreach ($subMenu as $row) : ?>
+									<?php if ($judul == $row['title']) : ?>
+
+										<li class="nav-item active">
+										<?php else : ?>
+										<li class="nav-item">
+										<?php endif; ?>
+										<a class="nav-link pb-0" style="color: #7E4A9E;" href="<?= base_url($row['url']); ?>">
+											<span><?= $row['title'] ?></span>
+										</a>
+										</li>
+									<?php endforeach; ?>
+								<?php endforeach; ?>
+								<li class="nav-item">
+									<a href="#" class="nav-link pb-0" data-toggle="modal" data-target="#help" style="width: 100px; color: #7E4A9E;">Bantuan</a>
+								</li>
 						</ul>
 					</div>
 				</nav>
 			</div>
 		</div>
+		<!-- </div> -->
+		<!-- </div> -->
 		<hr>
+	</div>
+
+	<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content" style="border-radius: 10px">
+				<div class="modal-header text-light" style="background-color: #7E4A9E; border-radius: 10px 10px 0px 0px">
+					<h4>Butuh Bantuan? Silahkan Hubungi Kami</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<h5 style="text-align: center;">Silahkan Hubungi Email Kami :</h5>
+					</div>
+
+					<div class="form-group">
+						<h4 style="text-align: center;">evoriaaxelindonesia@gmail.com</h4>
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button data-dismiss="modal" class="btn btn-outline-light" style="background-color: #7E4A9E; margin:auto;">OK</button>
+				</div>
+			</div>
+		</div>
 	</div>

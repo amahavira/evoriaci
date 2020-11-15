@@ -50,7 +50,7 @@ class Auth extends CI_Controller
 					} else if ($user['role_id'] == 2) {
 						redirect('user/evoria');
 					} else if ($user['role_id'] == 4) {
-						redirect('user/halaman_bisnis');
+						redirect('seller/halaman_bisnis');
 					} else {
 						redirect('user/evoria');
 					}

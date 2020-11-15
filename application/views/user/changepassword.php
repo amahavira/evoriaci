@@ -14,7 +14,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="newPassword1">Password Saat Ini</label>
+					<label for="newPassword1">Password Baru</label>
 					<input type="password" class="form-control" id="newPassword1" name="newPassword1">
 					<?= form_error('newPassword1', '<small class="text-danger pl-3">', '</small>'); ?>
 				</div>
