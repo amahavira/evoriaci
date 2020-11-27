@@ -32,17 +32,7 @@
 							<h6 style="color: #7E4A9E; font-weight: bold; margin-bottom: 10px">Rp. <?= number_format($row['harga'], 0, ',', '.'); ?>
 							</h6>
 							<div class="col-md-12" style="padding-left: 0px">
-								<style type="text/css">
-									.checked {
-										color: orange;
-									}
-								</style>
-								<span class="fa fa-star checked"></span>
-								<span class="checked" style="font-size: 12px; font-weight: bold;">5/5</span>
-
-								<div class="d-inline p-2" style="color: #7E4A9E; font-size: 10px">(419)
-								</div>
-								<button type="button" style="font-size: 10px" class="btn tmbl-ungu">Evoria Partner</button>
+								<a href="<?= base_url(); ?>user/detail/<?= $row['id'] ?>" style="font-size: 10px" class="btn tmbl-ungu">Detail</a>
 							</div>
 						</div>
 					</div>

@@ -143,7 +143,7 @@ $jasa = $this->db->query($queryJasa)->result_array();
 								</table>
 								<i class="fas fa-info-circle"></i> Biaya Layanan Evoria<br>
 								<p style="text-align: justify; font-size: 13px">
-									Setiap pemesanan akan dikenai biaya layanan sebesar 1,15% dari harga
+									Setiap pemesanan akan dikenai biaya layanan sebesar 0,05% dari harga
 								</p>
 								<hr>
 								<div class="text-center">

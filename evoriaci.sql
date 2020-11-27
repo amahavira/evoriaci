@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2020 at 01:32 PM
+-- Generation Time: Nov 27, 2020 at 11:25 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -44,7 +44,8 @@ INSERT INTO `inspirasi` (`id`, `id_seller`, `nama`, `gambar`, `date_created`) VA
 (4, 24, 'Lamaran', '11.jpg', 1603425963),
 (5, 24, 'Foto Prewed', '3.jpg', 1603425982),
 (6, 21, 'Event Musik Kosmik', 'A.png', 1603426090),
-(7, 24, 'Fotografi Festival Ikan Cupang', 'betta-fish-rc.jpg', 1603695660);
+(7, 24, 'Fotografi Festival Ikan Cupang', 'betta-fish-rc.jpg', 1603695660),
+(8, 24, 'Paket Pernikahan', '1_(110_of_131).jpg', 1604680192);
 
 -- --------------------------------------------------------
 
@@ -72,13 +73,12 @@ CREATE TABLE `jasa` (
 --
 
 INSERT INTO `jasa` (`id`, `nama`, `harga`, `gambar`, `lokasi`, `deskripsi`, `syarat`, `diskon`, `rating`, `id_kategori`, `id_seller`, `date_created`) VALUES
-(168, 'Paket Musik A', 20000000, 'music12.jpg', 'Yogyakarta', 'asdsaasda', 'assadasasdsda', 0, 0, 2, 24, 1601263891),
-(172, 'Paket Musik', 10000000, 'music11.jpg', 'Yogyakarta', '', '', 0, 0, 2, 21, 1601550114),
 (173, 'Paket Pernikahan', 20000000, 'wedding1.jpg', 'Yogyakarta', 'Gown type:\r\n- 1 Diamond gown (The luxurious and elegant Ballgown Collection)\r\nComplete Groom\'s suit:\r\n- Complete groom suit corresponding to the measures taken (suit + bottom) with vest &amp; tie (ready stock, rented)\r\nMake-up &amp; Hair do for wedding:\r\n- 1x Make-up &amp; hair-do for bride &amp; groom at Alissha\r\n- 1x Test make-up only for bride at pre-wedding\r\n- 1x Retouch only for bride &amp; groom for Jakarta sevice area (on the spot)\r\n- 1x Make-up &amp; hair-do for 2 mothers at Alissha (not include touch-up/retouch)\r\nPre-Wedding Photoshoot:\r\n- Indoor &amp; outdoor at Alissha (package w/o additional charge for outside location)\r\n- Include pre-wedding make-up (as test make-up for wedding day)\r\n- All file photos (raw/JPEG/not yet edited)\r\n- Outfit for photo + 1 casual pose with 2 gowns and 1 suit\r\n- 25 Edited Photos\r\n- 20 x 30 album size (1 unit)\r\n- 50 x 60 canvas + photo frame (1 unit)\r\n- Wedding Car (driver, decoration, fuel) \r\n- Not include parking &amp; toll fee, only Jakarta service area &amp; standard service time above 6 am. (outside service area &amp; service time, additional charge):\r\n- Alphard (rent 10 hours)\r\n\r\nWedding Cake (dummy cake, cake table, cake knife):\r\n- The default package includes a standard 3 layer dummy cake of voucher/limit value IDR 1.000.000,- for only Jakarta service area (outside service area, additional charge)\r\nWedding Day Photo &amp; Video Documentation:\r\n- On the spot filming\r\n- 1 photographer + 1 videographer\r\n- 1 album + all file photo + video highlight &amp; documentation\r\n- The default package includes wedding day documentation for only Jakarta service area &amp; starting documentation standard time above 6 am. to the end or reception (outside service area &amp; service time, additional charge)\r\n- Suggested to provide meal box for person on duty (not included in the package)\r\nBonus:\r\n- 2 Standar mother\'s gowns\r\n- 2 angpao\'s gowns\r\n- 1 bridesmaid\'s gown\r\n- 1 bridesmaid make-up &amp; hair-do at Alissha (not include touch-up/retouch)\r\n- 1x banner\r\n- 1 hand bouquet + 2 carnation type, corsage (fresh flower, rose type)', '- Pemesan harus memilih tanggal acara minimal 1 bulan sebelum hari-H\r\n- Pemesan harus menyetujui MOU', 0, 0, 1, 24, 1601960481),
-(179, 'Paket Pernikahan', 20000000, '1.jpg', 'Yogyakarta', 'asdadad', 'assdaaddasd', 0, 0, 1, 24, 1602671768),
-(180, 'Paket Lamaran', 20000000, '2.jpg', 'Yogyakarta', 'asdadsadsadsa', 'asdasasddasdasdas', 0, 0, 4, 22, 1603272329),
-(181, 'Paket Lamaran', 20000000, '11.jpg', 'Yogyakarta', 'sadsadasdas', 'asdasasdasddas', 0, 0, 4, 24, 1603423248),
-(182, 'Paket Musik Kosmik', 20000000, 'music1.jpg', 'Yogyakarta', 'asdasdasdas', 'asddasasddasdas', 0, 0, 2, 24, 1603423375);
+(180, 'Paket Lamaran', 40000000, '2.jpg', 'Yogyakarta', 'asdadsadsadsa', 'asdasasddasdasdas', 0, 0, 4, 22, 1603272329),
+(181, 'Paket Lamaran', 25000000, '1_(69_of_131).jpg', 'Yogyakarta', 'Gown type:\r\n- 1 Diamond gown (The luxurious and elegant Ballgown Collection)\r\nComplete Groom\'s suit:\r\n- Complete groom suit corresponding to the measures taken (suit + bottom) with vest & tie (ready stock, rented)\r\nMake-up & Hair do for wedding:\r\n- 1x Make-up & hair-do for bride & groom at Alissha\r\n- 1x Test make-up only for bride at pre-wedding\r\n- 1x Retouch only for bride & groom for Jakarta sevice area (on the spot)\r\n- 1x Make-up & hair-do for 2 mothers at Alissha (not include touch-up/retouch)\r\nPre-Wedding Photoshoot:\r\n- Indoor & outdoor at Alissha (package w/o additional charge for outside location)\r\n- Include pre-wedding make-up (as test make-up for wedding day)\r\n- All file photos (raw/JPEG/not yet edited)\r\n- Outfit for photo + 1 casual pose with 2 gowns and 1 suit\r\n- 25 Edited Photos\r\n- 20 x 30 album size (1 unit)\r\n- 50 x 60 canvas + photo frame (1 unit)\r\n- Wedding Car (driver, decoration, fuel) \r\n- Not include parking & toll fee, only Jakarta service area & standard service time above 6 am. (outside service area & service time, additional charge):\r\n- Alphard (rent 10 hours)\r\n\r\nWedding Cake (dummy cake, cake table, cake knife):\r\n- The default package includes a standard 3 layer dummy cake of voucher/limit value IDR 1.000.000,- for only Jakarta service area (outside service area, additional charge)\r\nWedding Day Photo & Video Documentation:\r\n- On the spot filming\r\n- 1 photographer + 1 videographer\r\n- 1 album + all file photo + video highlight & documentation\r\n- The default package includes wedding day documentation for only Jakarta service area & starting documentation standard time above 6 am. to the end or reception (outside service area & service time, additional charge)\r\n- Suggested to provide meal box for person on duty (not included in the package)\r\nBonus:\r\n- 2 Standar mother\'s gowns\r\n- 2 angpao\'s gowns\r\n- 1 bridesmaid\'s gown\r\n- 1 bridesmaid make-up & hair-do at Alissha (not include touch-up/retouch)\r\n- 1x banner\r\n- 1 hand bouquet + 2 carnation type, corsage (fresh flower, rose type)', '- Pemesan harus memilih tanggal acara minimal 1 bulan sebelum hari-H\r\n- Pemesan harus menyetujui MOU', 0, 0, 4, 24, 1605610986),
+(182, 'Paket Musik', 30000000, 'music1.jpg', 'Yogyakarta', '- 1 Set alat musik', '- Pemesan harus memilih tanggal acara minimal 1 bulan sebelum hari-H\r\n- Pemesan harus menyetujui MOU', 0, 0, 2, 24, 1605611299),
+(183, 'Paket Musik Skala Besar', 45000000, 'music11.jpg', 'Yogyakarta', '- Set musik lengkap\r\n- Set panggung lengkap\r\n- Set linghting lengkap', '- Pemesan harus memilih tanggal acara minimal 1 bulan sebelum hari-H\r\n- Pemesan harus menyetujui MOU', 0, 0, 2, 24, 1605611422),
+(184, 'Paket Pernikahan Mewah', 50750000, '21.jpg', 'Yogyakarta', 'Gown type:\r\n- 1 Diamond gown (The luxurious and elegant Ballgown Collection)\r\nComplete Groom\'s suit:\r\n- Complete groom suit corresponding to the measures taken (suit + bottom) with vest &amp; tie (ready stock, rented)\r\nMake-up &amp; Hair do for wedding:\r\n- 1x Make-up &amp; hair-do for bride &amp; groom at Alissha\r\n- 1x Test make-up only for bride at pre-wedding\r\n- 1x Retouch only for bride &amp; groom for Jakarta sevice area (on the spot)\r\n- 1x Make-up &amp; hair-do for 2 mothers at Alissha (not include touch-up/retouch)\r\nPre-Wedding Photoshoot:\r\n- Indoor &amp; outdoor at Alissha (package w/o additional charge for outside location)\r\n- Include pre-wedding make-up (as test make-up for wedding day)\r\n- All file photos (raw/JPEG/not yet edited)\r\n- Outfit for photo + 1 casual pose with 2 gowns and 1 suit\r\n- 25 Edited Photos\r\n- 20 x 30 album size (1 unit)\r\n- 50 x 60 canvas + photo frame (1 unit)\r\n- Wedding Car (driver, decoration, fuel) \r\n- Not include parking &amp; toll fee, only Jakarta service area &amp; standard service time above 6 am. (outside service area &amp; service time, additional charge):\r\n- Alphard (rent 10 hours)\r\n\r\nWedding Cake (dummy cake, cake table, cake knife):\r\n- The default package includes a standard 3 layer dummy cake of voucher/limit value IDR 1.000.000,- for only Jakarta service area (outside service area, additional charge)\r\nWedding Day Photo &amp; Video Documentation:\r\n- On the spot filming\r\n- 1 photographer + 1 videographer\r\n- 1 album + all file photo + video highlight &amp; documentation\r\n- The default package includes wedding day documentation for only Jakarta service area &amp; starting documentation standard time above 6 am. to the end or reception (outside service area &amp; service time, additional charge)\r\n- Suggested to provide meal box for person on duty (not included in the package)\r\nBonus:\r\n- 2 Standar mother\'s gowns\r\n- 2 angpao\'s gowns\r\n- 1 bridesmaid\'s gown\r\n- 1 bridesmaid make-up &amp; hair-do at Alissha (not include touch-up/retouch)\r\n- 1x banner\r\n- 1 hand bouquet + 2 carnation type, corsage (fresh flower, rose type)', '- Pemesan harus memilih tanggal acara minimal 1 bulan sebelum hari-H\r\n- Pemesan harus menyetujui MOU', 0, 0, 1, 24, 1605611530);
 
 -- --------------------------------------------------------
 
@@ -117,6 +117,7 @@ CREATE TABLE `pemesanan` (
   `tgl_order` date NOT NULL,
   `tgl_acara` date NOT NULL,
   `status` int(11) NOT NULL,
+  `subtotal` float NOT NULL,
   `bukti_bayar` varchar(100) NOT NULL,
   `rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -125,20 +126,37 @@ CREATE TABLE `pemesanan` (
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id`, `id_jasa`, `id_seller`, `id_user`, `tgl_order`, `tgl_acara`, `status`, `bukti_bayar`, `rating`) VALUES
-(25, 168, 24, 20, '2020-10-16', '2020-10-24', 5, 'Contoh_Bukti_TF1.png', 5),
-(26, 173, 24, 25, '2020-10-16', '2020-10-23', 5, 'Contoh_Bukti_TF.png', 4),
-(27, 168, 24, 25, '2020-10-16', '2020-10-30', 6, '', 0),
-(28, 172, 21, 25, '2020-10-16', '2020-10-24', 0, '', 0),
-(29, 172, 21, 25, '2020-10-16', '2020-10-31', 0, '', 0),
-(30, 168, 24, 25, '2020-10-19', '2020-11-19', 2, 'Contoh_Bukti_TF5.png', 0),
-(31, 172, 21, 25, '2020-10-19', '2020-10-31', 0, '', 0),
-(32, 173, 24, 25, '2020-10-19', '2020-11-19', 5, 'Contoh_Bukti_TF2.png', 5),
-(33, 168, 24, 20, '2020-10-20', '2020-11-28', 6, '', 0),
-(34, 173, 24, 25, '2020-10-26', '2020-11-26', 5, 'Contoh_Bukti_TF3.png', 5),
-(35, 173, 24, 25, '2020-10-26', '2020-11-26', 5, 'Contoh_Bukti_TF4.png', 5),
-(36, 181, 24, 25, '2020-10-27', '2020-10-27', 1, '', 0),
-(37, 168, 24, 20, '2020-10-27', '2020-10-27', 5, 'Contoh_Bukti_TF6.png', 5);
+INSERT INTO `pemesanan` (`id`, `id_jasa`, `id_seller`, `id_user`, `tgl_order`, `tgl_acara`, `status`, `subtotal`, `bukti_bayar`, `rating`) VALUES
+(25, 168, 24, 20, '2020-10-16', '2020-10-24', 5, 0, 'Contoh_Bukti_TF1.png', 5),
+(26, 173, 24, 25, '2020-10-16', '2020-10-23', 5, 0, 'Contoh_Bukti_TF.png', 4),
+(27, 168, 24, 25, '2020-10-16', '2020-10-30', 6, 0, '', 0),
+(28, 172, 21, 25, '2020-10-16', '2020-10-24', 5, 0, 'Contoh_Bukti_TF7.png', 5),
+(29, 172, 21, 25, '2020-10-16', '2020-10-31', 0, 0, '', 0),
+(30, 168, 24, 25, '2020-10-19', '2020-11-19', 2, 0, 'Contoh_Bukti_TF5.png', 0),
+(31, 172, 21, 25, '2020-10-19', '2020-10-31', 6, 0, '', 0),
+(32, 173, 24, 25, '2020-10-19', '2020-11-19', 5, 0, 'Contoh_Bukti_TF2.png', 5),
+(33, 168, 24, 20, '2020-10-20', '2020-11-28', 6, 0, '', 0),
+(34, 173, 24, 25, '2020-10-26', '2020-11-26', 5, 0, 'Contoh_Bukti_TF3.png', 5),
+(35, 173, 24, 25, '2020-10-26', '2020-11-26', 5, 0, 'Contoh_Bukti_TF4.png', 5),
+(36, 181, 24, 25, '2020-10-27', '2020-10-27', 1, 0, '', 0),
+(37, 168, 24, 20, '2020-10-27', '2020-10-27', 5, 0, 'Contoh_Bukti_TF6.png', 5),
+(38, 173, 24, 20, '2020-11-12', '2020-12-12', 5, 0, 'Contoh_Bukti_TF8.png', 5),
+(39, 173, 24, 20, '2020-11-12', '2020-12-12', 0, 0, '', 0),
+(40, 173, 24, 20, '2020-11-15', '2020-12-15', 5, 20230000, 'Contoh_Bukti_TF9.png', 5),
+(41, 173, 24, 20, '2020-11-15', '2020-12-15', 1, 20010000, '', 0),
+(42, 173, 24, 25, '2020-11-17', '2020-12-17', 0, 20010000, '', 0),
+(43, 173, 24, 25, '2020-11-17', '2020-12-17', 0, 20010000, '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `renge_harga`
+--
+
+CREATE TABLE `renge_harga` (
+  `id` int(11) NOT NULL,
+  `range_harga` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -175,11 +193,11 @@ INSERT INTO `users` (`id`, `name`, `nohp`, `email`, `pekerjaan`, `image`, `passw
 (18, 'Aditya Putra Irawan', '081260176831', 'aditputrasiro@gmail.com', '', '5.png', '$2y$10$Ol.p1zHqGbcB6yzGzXE3UeEroF0od5/pu3Re9zUhBaeULTzltIoL.', 1, 1, '', '', '', '', '', '', 0, 1595991605),
 (19, 'Aditya Mahavira Steven', '081258963548', 'amahavira@gmail.com', '', 'IMG_20170115_233052_264.jpg', '$2y$10$lrastBE8NfSrjv1ds1yMzu/Ct5rKehiqnMUPPdrMgrLDFFGlLbiAC', 1, 1, '', '', '', '', '', '', 0, 1596967265),
 (20, 'Muhammad Rasyid Shadiq', '082293641087', 'rasyidshadiq97@gmail.com', 'Karyawan', 'logo_kosmik_png.png', '$2y$10$T6ypha2aR5XQftI3h/nCsuZjVOoTLNdxmrnxPluz5Gvtxn5ArHPEi', 2, 1, '', '', 'Yogyakarta', '', '', '', 0, 1599142022),
-(21, 'Aditya Mahavira', '089520892008', 'amahavira@rocketmail.com', 'Marketing', '1.jpg', '$2y$10$kRA3o4ZueeRo100EIIYeQOiYtJu8PHbeT3Hd3JCQxQZS6MZks9aYq', 4, 1, 'Adot EO', 'Bergerak di bidang Macam-macam', 'Yogyakarta', 'Sleman', 'IG : @eocimtah', 'contohnpwp1.pdf', 0, 1600479121),
+(21, 'Aditya Mahavira', '089520892008', 'amahavira@rocketmail.com', 'Marketing', '1.jpg', '$2y$10$/OesBzq./6x0B0.QbTbde.x4vjZxjUgv.LyXyKpNXQnfaiq4TIGwa', 4, 1, 'Adot EO', 'Bergerak di bidang Macam-macam', 'Yogyakarta', 'Kalasan', 'IG : @eocimtah', 'contohnpwp1.pdf', 0, 1600479121),
 (22, 'Aditya Mahavira', '089520892008', 'tjah001@gmail.com', 'Marketing', '2.jpg', '$2y$10$yENhbWgf3scyVPd3yber7usjw876pp/1PJ8E2DBULb.lzNJ80QIJa', 4, 1, 'Project Adot', 'Bergerak di bidang Musik', 'Yogyakarta', 'Sleman', 'IG : @ProjectAdot', 'contohnpwp2.pdf', 0, 1600483783),
-(24, 'Fikri Almakmuri', '081258963548', 'alfikripriyagung@gmail.com', 'Marketing', 'music1.jpg', '$2y$10$JfHHMLDiDHCz2yC.kpihj.4ZiECGCfv0H8uxZkyoKLU9KNIt6l2We', 4, 1, 'Makmur EO', 'Makmur EO', 'Yogyakarta', 'Sleman', '@makmureo', 'contohnpwp.pdf', 0, 1600953180),
+(24, 'Fikri Almakmuri Gym', '081258963548', 'alfikripriyagung@gmail.com', 'Marketing', 'music1.jpg', '$2y$10$JfHHMLDiDHCz2yC.kpihj.4ZiECGCfv0H8uxZkyoKLU9KNIt6l2We', 4, 1, 'Makmur EO', 'Makmur EO', 'Yogyakarta', 'Sleman', '@makmureo', 'contohnpwp.pdf', 0, 1600953180),
 (25, 'Muhammad Yasin Deru Saputra', '081227272672', 'mydsaputra@gmail.com', 'Karyawan', 'default.png', '$2y$10$A4hlbghCUH5dsL39l1sa6Oov4BRzPcy3pJJS4TZDeSomfXRxUx0Vu', 2, 1, '', '', 'Kalasan', '', '', '', 0, 1601954798),
-(33, 'Adoto GGWP', '089520892008', 'adotoggwp1@gmail.com', 'Karyawan', 'default.png', '$2y$10$kYZpV81qWSMan93mdEMci.JT30s9TgXCetNNPwXA0vD20c.qM2tEG', 2, 1, '', '', 'Wonosobo', '', '', '', 0, 1604664481);
+(34, 'Nassharih Abdullah Cungkring', '089520892008', 'nassharihabdullah17@gmail.com', 'Marketing', 'default.png', '$2y$10$OdUAznYh.Y7/ddL80y51BOwdh9VrKncXHeckH1ojCCj2yg7OI8.U2', 4, 1, 'Dulloh EO', 'Bergerak di Bidang Musik', 'Yogyakarta', 'Sleman', '@dulloheo', 'contohnpwp3.pdf', 0, 1604936505);
 
 -- --------------------------------------------------------
 
@@ -203,9 +221,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (21, 1, 3),
 (22, 1, 2),
 (24, 4, 4),
-(25, 1, 4),
-(27, 4, 2),
-(28, 5, 4);
+(25, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -278,14 +294,17 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (12, 2, 'Home', 'user/evoria', 'fas fa-fw fa-home', 1),
 (13, 2, 'Vendor', 'user/evoria/index#vendor', 'fas fa-fw fa-store', 1),
 (14, 2, 'Inspirasi', 'user/inspiration', 'fas fa-fw fa-images', 1),
-(15, 4, 'Data Tentang Bisnis', 'user/data_bisnis', 'fas fa-fw fa-table', 0),
-(17, 4, 'Edit Profile', 'user/edit_profile_seller', 'fas fa-fw fa-user-edit', 0),
+(15, 4, 'Data Tentang Bisnis', 'seller/data_bisnis', 'fas fa-fw fa-table', 0),
+(17, 4, 'Edit Profile', 'seller/edit_profile_seller', 'fas fa-fw fa-user-edit', 0),
 (19, 2, 'Pesanan Saya', 'user/pesanan_saya', 'fas fa-fw fa-boxes', 1),
-(22, 4, 'Halaman Bisnis', 'user/halaman_bisnis', 'fas fa-fw fa-store', 1),
-(23, 4, 'Profile', 'user/profile_seller', 'fas fa-fw fa-user-circle', 1),
-(24, 4, 'Halaman Pesanan', 'user/pesanan', 'fas fa-fw fa-boxes', 1),
+(22, 4, 'Halaman Bisnis', 'seller/halaman_bisnis', 'fas fa-fw fa-store', 1),
+(23, 4, 'Profile', 'seller/profile_seller', 'fas fa-fw fa-user-circle', 1),
+(24, 4, 'Halaman Pesanan', 'seller/pesanan', 'fas fa-fw fa-boxes', 1),
 (26, 1, 'Kategori', 'admin/kategori', 'fas fa-fw fa-store', 1),
-(27, 1, 'User Management', 'admin/usermanagement', 'fas fa-fw fa-user-edit', 1);
+(27, 1, 'User Management', 'admin/usermanagement', 'fas fa-fw fa-user-edit', 1),
+(30, 4, 'My Profile', 'seller/user', 'fas fa-fw fa-user', 0),
+(31, 4, 'Edit Profile', 'seller/edit', 'fas fa-fw fa-user-edit', 0),
+(32, 4, 'Change Password', 'seller/changepassword', 'fas fa-fw fa-key', 0);
 
 -- --------------------------------------------------------
 
@@ -308,7 +327,8 @@ INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
 (1, 'rasyidshadiq97@gmail.com', 'yyB2Am3qrP63YfcceF8ZmypRuDm6JFI9yKFvep2MQEU=', 1599142022),
 (3, 'tjah001@gmail.com', 'yPgwU/NEzGxd+gli3BccwKHiAR9KToM2Z9jNeDG2YE8=', 1600483783),
 (12, 'adotoggwp1@gmail.com', 'Z5FrfO3qOcNowrSq2ScMzl/R89NR16guN/lurdrKK2Y=', 1604664826),
-(13, 'adotoggwp1@gmail.com', 'wEEUNPUYLgo97BhaLQsvfD32dowi1/5XKksLrT28rhI=', 1604665073);
+(13, 'adotoggwp1@gmail.com', 'wEEUNPUYLgo97BhaLQsvfD32dowi1/5XKksLrT28rhI=', 1604665073),
+(14, 'amahavira@rocketmail.com', 'FSkyxETVbeZVPb2i+LEJag1V+o17tfMBy6ektjJqBsI=', 1604681666);
 
 --
 -- Indexes for dumped tables
@@ -336,6 +356,12 @@ ALTER TABLE `kategori_jasa`
 -- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `renge_harga`
+--
+ALTER TABLE `renge_harga`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,13 +408,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `inspirasi`
 --
 ALTER TABLE `inspirasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jasa`
 --
 ALTER TABLE `jasa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `kategori_jasa`
@@ -400,19 +426,25 @@ ALTER TABLE `kategori_jasa`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `renge_harga`
+--
+ALTER TABLE `renge_harga`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -430,13 +462,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
